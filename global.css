@@ -18,3 +18,8 @@ input,
 button {
   outline: none;
 }
+
+button:hover {
+  transform: translateY(-1px);
+  transition-duration: 250ms;
+}
