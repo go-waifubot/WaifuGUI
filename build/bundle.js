@@ -2363,11 +2363,11 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[7] = list[i];
+    	child_ctx[8] = list[i];
     	return child_ctx;
     }
 
-    // (1:0) <script lang="ts">import { Inventory }
+    // (1:0) <script lang="ts">import { push }
     function create_catch_block(ctx) {
     	const block = {
     		c: noop,
@@ -2382,29 +2382,35 @@ var app = (function () {
     		block,
     		id: create_catch_block.name,
     		type: "catch",
-    		source: "(1:0) <script lang=\\\"ts\\\">import { Inventory }",
+    		source: "(1:0) <script lang=\\\"ts\\\">import { push }",
     		ctx
     	});
 
     	return block;
     }
 
-    // (11:60)      <div class="search">       <div class="search-prop">         <Search waifus="{ws}
+    // (12:60)      <div class="nav">       <div class="back-btn pl">         <button           class="search-prop"           on:click="{() => {             push('/');           }}
     function create_then_block(ctx) {
-    	let div2;
+    	let div4;
     	let div0;
+    	let button;
+    	let t1;
+    	let div3;
+    	let div1;
     	let search;
     	let updating_filtered;
-    	let t0;
-    	let div1;
+    	let t2;
+    	let div2;
     	let searchbyanime;
     	let updating_filtered_1;
-    	let t1;
+    	let t3;
     	let if_block_anchor;
     	let current;
+    	let mounted;
+    	let dispose;
 
     	function search_filtered_binding(value) {
-    		/*search_filtered_binding*/ ctx[4](value);
+    		/*search_filtered_binding*/ ctx[5](value);
     	}
 
     	let search_props = { waifus: /*ws*/ ctx[1] };
@@ -2417,10 +2423,10 @@ var app = (function () {
     	binding_callbacks.push(() => bind(search, "filtered", search_filtered_binding));
 
     	function searchbyanime_filtered_binding(value) {
-    		/*searchbyanime_filtered_binding*/ ctx[5](value);
+    		/*searchbyanime_filtered_binding*/ ctx[6](value);
     	}
 
-    	let searchbyanime_props = { waifus: /*waifus*/ ctx[6] };
+    	let searchbyanime_props = { waifus: /*waifus*/ ctx[7] };
 
     	if (/*ws*/ ctx[1] !== void 0) {
     		searchbyanime_props.filtered = /*ws*/ ctx[1];
@@ -2436,33 +2442,53 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div2 = element("div");
+    			div4 = element("div");
     			div0 = element("div");
-    			create_component(search.$$.fragment);
-    			t0 = space();
-    			div1 = element("div");
-    			create_component(searchbyanime.$$.fragment);
+    			button = element("button");
+    			button.textContent = "Back";
     			t1 = space();
+    			div3 = element("div");
+    			div1 = element("div");
+    			create_component(search.$$.fragment);
+    			t2 = space();
+    			div2 = element("div");
+    			create_component(searchbyanime.$$.fragment);
+    			t3 = space();
     			if (if_block) if_block.c();
     			if_block_anchor = empty();
-    			attr_dev(div0, "class", "search-prop svelte-13mc793");
-    			add_location(div0, file$1, 12, 6, 318);
-    			attr_dev(div1, "class", "search-prop svelte-13mc793");
-    			add_location(div1, file$1, 15, 6, 418);
-    			attr_dev(div2, "class", "search svelte-13mc793");
-    			add_location(div2, file$1, 11, 4, 291);
+    			attr_dev(button, "class", "search-prop svelte-19m875j");
+    			add_location(button, file$1, 14, 8, 391);
+    			attr_dev(div0, "class", "back-btn pl svelte-19m875j");
+    			add_location(div0, file$1, 13, 6, 357);
+    			attr_dev(div1, "class", "search-prop");
+    			add_location(div1, file$1, 21, 8, 560);
+    			attr_dev(div2, "class", "search-prop");
+    			add_location(div2, file$1, 24, 8, 666);
+    			attr_dev(div3, "class", "search pl svelte-19m875j");
+    			add_location(div3, file$1, 20, 6, 528);
+    			attr_dev(div4, "class", "nav svelte-19m875j");
+    			add_location(div4, file$1, 12, 4, 333);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div2, anchor);
-    			append_dev(div2, div0);
-    			mount_component(search, div0, null);
-    			append_dev(div2, t0);
-    			append_dev(div2, div1);
-    			mount_component(searchbyanime, div1, null);
-    			insert_dev(target, t1, anchor);
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, div0);
+    			append_dev(div0, button);
+    			append_dev(div4, t1);
+    			append_dev(div4, div3);
+    			append_dev(div3, div1);
+    			mount_component(search, div1, null);
+    			append_dev(div3, t2);
+    			append_dev(div3, div2);
+    			mount_component(searchbyanime, div2, null);
+    			insert_dev(target, t3, anchor);
     			if (if_block) if_block.m(target, anchor);
     			insert_dev(target, if_block_anchor, anchor);
     			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*click_handler*/ ctx[4], false, false, false);
+    				mounted = true;
+    			}
     		},
     		p: function update(ctx, dirty) {
     			const search_changes = {};
@@ -2476,7 +2502,7 @@ var app = (function () {
 
     			search.$set(search_changes);
     			const searchbyanime_changes = {};
-    			if (dirty & /*$Inventory, params*/ 9) searchbyanime_changes.waifus = /*waifus*/ ctx[6];
+    			if (dirty & /*$Inventory, params*/ 9) searchbyanime_changes.waifus = /*waifus*/ ctx[7];
 
     			if (!updating_filtered_1 && dirty & /*ws*/ 2) {
     				updating_filtered_1 = true;
@@ -2511,12 +2537,14 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div2);
+    			if (detaching) detach_dev(div4);
     			destroy_component(search);
     			destroy_component(searchbyanime);
-    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(t3);
     			if (if_block) if_block.d(detaching);
     			if (detaching) detach_dev(if_block_anchor);
+    			mounted = false;
+    			dispose();
     		}
     	};
 
@@ -2524,14 +2552,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(11:60)      <div class=\\\"search\\\">       <div class=\\\"search-prop\\\">         <Search waifus=\\\"{ws}",
+    		source: "(12:60)      <div class=\\\"nav\\\">       <div class=\\\"back-btn pl\\\">         <button           class=\\\"search-prop\\\"           on:click=\\\"{() => {             push('/');           }}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (20:4) {#if ws}
+    // (30:4) {#if ws}
     function create_if_block(ctx) {
     	let div;
     	let t;
@@ -2557,8 +2585,8 @@ var app = (function () {
     			t = space();
     			if (if_block) if_block.c();
     			if_block_anchor = empty();
-    			attr_dev(div, "class", "container svelte-13mc793");
-    			add_location(div, file$1, 20, 6, 552);
+    			attr_dev(div, "class", "container svelte-19m875j");
+    			add_location(div, file$1, 30, 6, 817);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2620,24 +2648,24 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(20:4) {#if ws}",
+    		source: "(30:4) {#if ws}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (22:8) {#each ws2.splice(0, 105) as w}
+    // (32:8) {#each ws2.splice(0, 105) as w}
     function create_each_block(ctx) {
     	let div;
     	let a;
     	let h4;
-    	let t0_value = /*w*/ ctx[7].Name + "";
+    	let t0_value = /*w*/ ctx[8].Name + "";
     	let t0;
     	let a_href_value;
     	let t1;
     	let p;
-    	let t2_value = /*w*/ ctx[7].ID + "";
+    	let t2_value = /*w*/ ctx[8].ID + "";
     	let t2;
     	let t3;
     	let img;
@@ -2657,20 +2685,20 @@ var app = (function () {
     			t3 = space();
     			img = element("img");
     			t4 = space();
-    			attr_dev(h4, "class", "svelte-13mc793");
-    			add_location(h4, file$1, 26, 14, 781);
-    			attr_dev(a, "href", a_href_value = "https://anilist.co/character/" + /*w*/ ctx[7].ID);
+    			attr_dev(h4, "class", "svelte-19m875j");
+    			add_location(h4, file$1, 36, 14, 1046);
+    			attr_dev(a, "href", a_href_value = "https://anilist.co/character/" + /*w*/ ctx[8].ID);
     			attr_dev(a, "title", "view on anilist");
-    			attr_dev(a, "class", "svelte-13mc793");
-    			add_location(a, file$1, 23, 12, 663);
-    			attr_dev(p, "class", "svelte-13mc793");
-    			add_location(p, file$1, 30, 12, 860);
-    			if (img.src !== (img_src_value = /*w*/ ctx[7].Image)) attr_dev(img, "src", img_src_value);
-    			attr_dev(img, "alt", img_alt_value = /*w*/ ctx[7].Name);
-    			attr_dev(img, "class", "svelte-13mc793");
-    			add_location(img, file$1, 31, 12, 886);
-    			attr_dev(div, "class", "waifu-card svelte-13mc793");
-    			add_location(div, file$1, 22, 10, 626);
+    			attr_dev(a, "class", "svelte-19m875j");
+    			add_location(a, file$1, 33, 12, 928);
+    			attr_dev(p, "class", "svelte-19m875j");
+    			add_location(p, file$1, 40, 12, 1125);
+    			if (img.src !== (img_src_value = /*w*/ ctx[8].Image)) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", img_alt_value = /*w*/ ctx[8].Name);
+    			attr_dev(img, "class", "svelte-19m875j");
+    			add_location(img, file$1, 41, 12, 1151);
+    			attr_dev(div, "class", "waifu-card svelte-19m875j");
+    			add_location(div, file$1, 32, 10, 891);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2685,19 +2713,19 @@ var app = (function () {
     			append_dev(div, t4);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*ws2*/ 4 && t0_value !== (t0_value = /*w*/ ctx[7].Name + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*ws2*/ 4 && t0_value !== (t0_value = /*w*/ ctx[8].Name + "")) set_data_dev(t0, t0_value);
 
-    			if (dirty & /*ws2*/ 4 && a_href_value !== (a_href_value = "https://anilist.co/character/" + /*w*/ ctx[7].ID)) {
+    			if (dirty & /*ws2*/ 4 && a_href_value !== (a_href_value = "https://anilist.co/character/" + /*w*/ ctx[8].ID)) {
     				attr_dev(a, "href", a_href_value);
     			}
 
-    			if (dirty & /*ws2*/ 4 && t2_value !== (t2_value = /*w*/ ctx[7].ID + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*ws2*/ 4 && t2_value !== (t2_value = /*w*/ ctx[8].ID + "")) set_data_dev(t2, t2_value);
 
-    			if (dirty & /*ws2*/ 4 && img.src !== (img_src_value = /*w*/ ctx[7].Image)) {
+    			if (dirty & /*ws2*/ 4 && img.src !== (img_src_value = /*w*/ ctx[8].Image)) {
     				attr_dev(img, "src", img_src_value);
     			}
 
-    			if (dirty & /*ws2*/ 4 && img_alt_value !== (img_alt_value = /*w*/ ctx[7].Name)) {
+    			if (dirty & /*ws2*/ 4 && img_alt_value !== (img_alt_value = /*w*/ ctx[8].Name)) {
     				attr_dev(img, "alt", img_alt_value);
     			}
     		},
@@ -2710,14 +2738,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(22:8) {#each ws2.splice(0, 105) as w}",
+    		source: "(32:8) {#each ws2.splice(0, 105) as w}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (36:6) {#if ws.length > 100}
+    // (46:6) {#if ws.length > 100}
     function create_if_block_1(ctx) {
     	let h4;
 
@@ -2725,8 +2753,8 @@ var app = (function () {
     		c: function create() {
     			h4 = element("h4");
     			h4.textContent = "Search to list more...";
-    			attr_dev(h4, "class", "search-more svelte-13mc793");
-    			add_location(h4, file$1, 36, 8, 1007);
+    			attr_dev(h4, "class", "search-more svelte-19m875j");
+    			add_location(h4, file$1, 46, 8, 1272);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h4, anchor);
@@ -2740,14 +2768,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(36:6) {#if ws.length > 100}",
+    		source: "(46:6) {#if ws.length > 100}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1:0) <script lang="ts">import { Inventory }
+    // (1:0) <script lang="ts">import { push }
     function create_pending_block(ctx) {
     	const block = {
     		c: noop,
@@ -2762,7 +2790,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(1:0) <script lang=\\\"ts\\\">import { Inventory }",
+    		source: "(1:0) <script lang=\\\"ts\\\">import { push }",
     		ctx
     	});
 
@@ -2782,7 +2810,7 @@ var app = (function () {
     		pending: create_pending_block,
     		then: create_then_block,
     		catch: create_catch_block,
-    		value: 6,
+    		value: 7,
     		blocks: [,,,]
     	};
 
@@ -2792,8 +2820,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			info.block.c();
-    			attr_dev(div, "class", "wrapper svelte-13mc793");
-    			add_location(div, file$1, 9, 0, 204);
+    			attr_dev(div, "class", "wrapper svelte-19m875j");
+    			add_location(div, file$1, 10, 0, 246);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2861,6 +2889,10 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<WaifuList> was created with unknown prop '${key}'`);
     	});
 
+    	const click_handler = () => {
+    		push("/");
+    	};
+
     	function search_filtered_binding(value) {
     		ws2 = value;
     		$$invalidate(2, ws2);
@@ -2876,6 +2908,7 @@ var app = (function () {
     	};
 
     	$$self.$capture_state = () => ({
+    		push,
     		Inventory,
     		Search,
     		SearchByAnime: SearchByMedia,
@@ -2900,6 +2933,7 @@ var app = (function () {
     		ws,
     		ws2,
     		$Inventory,
+    		click_handler,
     		search_filtered_binding,
     		searchbyanime_filtered_binding
     	];
