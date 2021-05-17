@@ -1708,22 +1708,22 @@ var app = (function () {
     			t5 = space();
     			button = element("button");
     			button.textContent = "Search";
-    			attr_dev(h1, "class", "svelte-l5yqrn");
+    			attr_dev(h1, "class", "svelte-1a3ffxy");
     			add_location(h1, file$4, 6, 4, 120);
     			if (img.src !== (img_src_value = "./favicon.png")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "icon");
     			add_location(img, file$4, 7, 4, 153);
-    			attr_dev(span, "class", "svelte-l5yqrn");
+    			attr_dev(span, "class", "svelte-1a3ffxy");
     			add_location(span, file$4, 8, 4, 196);
     			attr_dev(input, "type", "text");
     			attr_dev(input, "placeholder", "206794847581896705");
-    			attr_dev(input, "class", "svelte-l5yqrn");
+    			attr_dev(input, "class", "svelte-1a3ffxy");
     			add_location(input, file$4, 9, 4, 263);
-    			attr_dev(button, "class", "svelte-l5yqrn");
+    			attr_dev(button, "class", "svelte-1a3ffxy");
     			add_location(button, file$4, 10, 4, 342);
-    			attr_dev(div, "class", "content svelte-l5yqrn");
+    			attr_dev(div, "class", "content svelte-1a3ffxy");
     			add_location(div, file$4, 5, 2, 94);
-    			attr_dev(main, "class", "svelte-l5yqrn");
+    			attr_dev(main, "class", "svelte-1a3ffxy");
     			add_location(main, file$4, 4, 0, 85);
     		},
     		l: function claim(nodes) {
@@ -2456,17 +2456,17 @@ var app = (function () {
     			t3 = space();
     			if (if_block) if_block.c();
     			if_block_anchor = empty();
-    			attr_dev(button, "class", "search-prop svelte-19m875j");
+    			attr_dev(button, "class", "search-prop svelte-11igq9a");
     			add_location(button, file$1, 14, 8, 391);
-    			attr_dev(div0, "class", "back-btn pl svelte-19m875j");
+    			attr_dev(div0, "class", "back-btn pl svelte-11igq9a");
     			add_location(div0, file$1, 13, 6, 357);
     			attr_dev(div1, "class", "search-prop");
     			add_location(div1, file$1, 21, 8, 560);
     			attr_dev(div2, "class", "search-prop");
     			add_location(div2, file$1, 24, 8, 666);
-    			attr_dev(div3, "class", "search pl svelte-19m875j");
+    			attr_dev(div3, "class", "search pl svelte-11igq9a");
     			add_location(div3, file$1, 20, 6, 528);
-    			attr_dev(div4, "class", "nav svelte-19m875j");
+    			attr_dev(div4, "class", "nav svelte-11igq9a");
     			add_location(div4, file$1, 12, 4, 333);
     		},
     		m: function mount(target, anchor) {
@@ -2585,7 +2585,7 @@ var app = (function () {
     			t = space();
     			if (if_block) if_block.c();
     			if_block_anchor = empty();
-    			attr_dev(div, "class", "container svelte-19m875j");
+    			attr_dev(div, "class", "container svelte-11igq9a");
     			add_location(div, file$1, 30, 6, 817);
     		},
     		m: function mount(target, anchor) {
@@ -2685,19 +2685,19 @@ var app = (function () {
     			t3 = space();
     			img = element("img");
     			t4 = space();
-    			attr_dev(h4, "class", "svelte-19m875j");
+    			attr_dev(h4, "class", "svelte-11igq9a");
     			add_location(h4, file$1, 36, 14, 1046);
     			attr_dev(a, "href", a_href_value = "https://anilist.co/character/" + /*w*/ ctx[8].ID);
     			attr_dev(a, "title", "view on anilist");
-    			attr_dev(a, "class", "svelte-19m875j");
+    			attr_dev(a, "class", "svelte-11igq9a");
     			add_location(a, file$1, 33, 12, 928);
-    			attr_dev(p, "class", "svelte-19m875j");
+    			attr_dev(p, "class", "svelte-11igq9a");
     			add_location(p, file$1, 40, 12, 1125);
     			if (img.src !== (img_src_value = /*w*/ ctx[8].Image)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", img_alt_value = /*w*/ ctx[8].Name);
-    			attr_dev(img, "class", "svelte-19m875j");
+    			attr_dev(img, "class", "svelte-11igq9a");
     			add_location(img, file$1, 41, 12, 1151);
-    			attr_dev(div, "class", "waifu-card svelte-19m875j");
+    			attr_dev(div, "class", "waifu-card svelte-11igq9a");
     			add_location(div, file$1, 32, 10, 891);
     		},
     		m: function mount(target, anchor) {
@@ -2753,7 +2753,7 @@ var app = (function () {
     		c: function create() {
     			h4 = element("h4");
     			h4.textContent = "Search to list more...";
-    			attr_dev(h4, "class", "search-more svelte-19m875j");
+    			attr_dev(h4, "class", "search-more svelte-11igq9a");
     			add_location(h4, file$1, 46, 8, 1272);
     		},
     		m: function mount(target, anchor) {
@@ -2820,7 +2820,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			info.block.c();
-    			attr_dev(div, "class", "wrapper svelte-19m875j");
+    			attr_dev(div, "class", "wrapper svelte-11igq9a");
     			add_location(div, file$1, 10, 0, 246);
     		},
     		l: function claim(nodes) {
@@ -2985,7 +2985,7 @@ var app = (function () {
     		c: function create() {
     			main = element("main");
     			create_component(waifulist.$$.fragment);
-    			attr_dev(main, "class", "svelte-1w46dkr");
+    			attr_dev(main, "class", "svelte-at373a");
     			add_location(main, file, 4, 0, 103);
     		},
     		l: function claim(nodes) {
