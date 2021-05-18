@@ -2431,11 +2431,13 @@ var app = (function () {
     			div0 = element("div");
     			p = element("p");
     			t4 = text(t4_value);
+    			attr_dev(h3, "class", "svelte-1kzb7z0");
     			add_location(h3, file$2, 5, 4, 110);
+    			attr_dev(p, "class", "svelte-1kzb7z0");
     			add_location(p, file$2, 23, 6, 642);
-    			attr_dev(div0, "class", "description svelte-h21eur");
+    			attr_dev(div0, "class", "description svelte-1kzb7z0");
     			add_location(div0, file$2, 22, 4, 610);
-    			attr_dev(div1, "class", "content svelte-h21eur");
+    			attr_dev(div1, "class", "content svelte-1kzb7z0");
     			add_location(div1, file$2, 4, 2, 84);
     		},
     		m: function mount(target, anchor) {
@@ -2518,17 +2520,21 @@ var app = (function () {
     			t4 = text(t4_value);
     			t5 = space();
     			img = element("img");
+    			attr_dev(h4, "class", "svelte-1kzb7z0");
     			add_location(h4, file$2, 7, 6, 176);
+    			attr_dev(h5, "class", "svelte-1kzb7z0");
     			add_location(h5, file$2, 12, 10, 367);
     			attr_dev(a, "href", a_href_value = "https://anilist.co/character/" + /*$Inventory*/ ctx[0].Favorite.ID);
     			attr_dev(a, "title", "view on anilist");
-    			attr_dev(a, "class", "svelte-h21eur");
+    			attr_dev(a, "class", "svelte-1kzb7z0");
     			add_location(a, file$2, 9, 8, 243);
+    			attr_dev(p, "class", "svelte-1kzb7z0");
     			add_location(p, file$2, 16, 8, 448);
     			if (img.src !== (img_src_value = /*$Inventory*/ ctx[0].Favorite.Image)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", img_alt_value = /*$Inventory*/ ctx[0].Favorite.Name);
+    			attr_dev(img, "class", "svelte-1kzb7z0");
     			add_location(img, file$2, 17, 8, 488);
-    			attr_dev(div, "class", "waifu-card");
+    			attr_dev(div, "class", "waifu-card svelte-1kzb7z0");
     			add_location(div, file$2, 8, 6, 210);
     		},
     		m: function mount(target, anchor) {
@@ -2689,7 +2695,7 @@ var app = (function () {
     	return block;
     }
 
-    // (28:62)        <div class="nav" id="nav">         <div class="back-btn pl">           <button             class="search-prop"             on:click="{() => {               push('/');             }}
+    // (27:60)      <div class="nav" id="nav">       <div class="back-btn pl">         <button           class="search-prop"           on:click="{() => {             push('/');           }}
     function create_then_block(ctx) {
     	let div4;
     	let div0;
@@ -2704,10 +2710,11 @@ var app = (function () {
     	let searchbyanime;
     	let updating_filtered_1;
     	let t3;
+    	let div7;
+    	let div6;
     	let div5;
     	let profile;
     	let t4;
-    	let if_block_anchor;
     	let current;
     	let mounted;
     	let dispose;
@@ -2758,27 +2765,32 @@ var app = (function () {
     			div2 = element("div");
     			create_component(searchbyanime.$$.fragment);
     			t3 = space();
+    			div7 = element("div");
+    			div6 = element("div");
     			div5 = element("div");
     			create_component(profile.$$.fragment);
     			t4 = space();
     			if (if_block) if_block.c();
-    			if_block_anchor = empty();
-    			attr_dev(button, "class", "search-prop svelte-tm6yyy");
-    			add_location(button, file$1, 30, 10, 923);
-    			attr_dev(div0, "class", "back-btn pl svelte-tm6yyy");
-    			add_location(div0, file$1, 29, 8, 887);
+    			attr_dev(button, "class", "search-prop svelte-q79ugn");
+    			add_location(button, file$1, 29, 8, 891);
+    			attr_dev(div0, "class", "back-btn pl svelte-q79ugn");
+    			add_location(div0, file$1, 28, 6, 857);
     			attr_dev(div1, "class", "search-prop");
-    			add_location(div1, file$1, 37, 10, 1106);
+    			add_location(div1, file$1, 36, 8, 1060);
     			attr_dev(div2, "class", "search-prop");
-    			add_location(div2, file$1, 40, 10, 1218);
-    			attr_dev(div3, "class", "search pl svelte-tm6yyy");
-    			add_location(div3, file$1, 36, 8, 1072);
-    			attr_dev(div4, "class", "nav svelte-tm6yyy");
+    			add_location(div2, file$1, 39, 8, 1166);
+    			attr_dev(div3, "class", "search pl svelte-q79ugn");
+    			add_location(div3, file$1, 35, 6, 1028);
+    			attr_dev(div4, "class", "nav svelte-q79ugn");
     			attr_dev(div4, "id", "nav");
-    			add_location(div4, file$1, 28, 6, 852);
-    			attr_dev(div5, "class", "left svelte-tm6yyy");
+    			add_location(div4, file$1, 27, 4, 824);
+    			attr_dev(div5, "class", "left svelte-q79ugn");
     			attr_dev(div5, "id", "profile");
-    			add_location(div5, file$1, 45, 6, 1364);
+    			add_location(div5, file$1, 46, 8, 1372);
+    			attr_dev(div6, "class", "container svelte-q79ugn");
+    			add_location(div6, file$1, 45, 6, 1340);
+    			attr_dev(div7, "class", "container-wrapper svelte-q79ugn");
+    			add_location(div7, file$1, 44, 4, 1302);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div4, anchor);
@@ -2792,11 +2804,12 @@ var app = (function () {
     			append_dev(div3, div2);
     			mount_component(searchbyanime, div2, null);
     			insert_dev(target, t3, anchor);
-    			insert_dev(target, div5, anchor);
+    			insert_dev(target, div7, anchor);
+    			append_dev(div7, div6);
+    			append_dev(div6, div5);
     			mount_component(profile, div5, null);
-    			insert_dev(target, t4, anchor);
-    			if (if_block) if_block.m(target, anchor);
-    			insert_dev(target, if_block_anchor, anchor);
+    			append_dev(div6, t4);
+    			if (if_block) if_block.m(div6, null);
     			current = true;
 
     			if (!mounted) {
@@ -2832,7 +2845,7 @@ var app = (function () {
     				} else {
     					if_block = create_if_block(ctx);
     					if_block.c();
-    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    					if_block.m(div6, null);
     				}
     			} else if (if_block) {
     				if_block.d(1);
@@ -2857,11 +2870,9 @@ var app = (function () {
     			destroy_component(search);
     			destroy_component(searchbyanime);
     			if (detaching) detach_dev(t3);
-    			if (detaching) detach_dev(div5);
+    			if (detaching) detach_dev(div7);
     			destroy_component(profile);
-    			if (detaching) detach_dev(t4);
-    			if (if_block) if_block.d(detaching);
-    			if (detaching) detach_dev(if_block_anchor);
+    			if (if_block) if_block.d();
     			mounted = false;
     			dispose();
     		}
@@ -2871,19 +2882,18 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(28:62)        <div class=\\\"nav\\\" id=\\\"nav\\\">         <div class=\\\"back-btn pl\\\">           <button             class=\\\"search-prop\\\"             on:click=\\\"{() => {               push('/');             }}",
+    		source: "(27:60)      <div class=\\\"nav\\\" id=\\\"nav\\\">       <div class=\\\"back-btn pl\\\">         <button           class=\\\"search-prop\\\"           on:click=\\\"{() => {             push('/');           }}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (49:6) {#if ws}
+    // (50:8) {#if ws}
     function create_if_block(ctx) {
-    	let div1;
-    	let div0;
     	let t;
-    	let each_value = /*ws2*/ ctx[2].splice(0, 105);
+    	let if_block_anchor;
+    	let each_value = /*ws2*/ ctx[2].splice(0, 100);
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -2895,35 +2905,26 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div1 = element("div");
-    			div0 = element("div");
-
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
     			t = space();
     			if (if_block) if_block.c();
-    			attr_dev(div0, "class", "container svelte-tm6yyy");
-    			add_location(div0, file$1, 50, 10, 1478);
-    			attr_dev(div1, "id", "list");
-    			attr_dev(div1, "class", "svelte-tm6yyy");
-    			add_location(div1, file$1, 49, 8, 1452);
+    			if_block_anchor = empty();
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div1, anchor);
-    			append_dev(div1, div0);
-
     			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(div0, null);
+    				each_blocks[i].m(target, anchor);
     			}
 
-    			append_dev(div1, t);
-    			if (if_block) if_block.m(div1, null);
+    			insert_dev(target, t, anchor);
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*ws2*/ 4) {
-    				each_value = /*ws2*/ ctx[2].splice(0, 105);
+    				each_value = /*ws2*/ ctx[2].splice(0, 100);
     				validate_each_argument(each_value);
     				let i;
 
@@ -2935,7 +2936,7 @@ var app = (function () {
     					} else {
     						each_blocks[i] = create_each_block(child_ctx);
     						each_blocks[i].c();
-    						each_blocks[i].m(div0, null);
+    						each_blocks[i].m(t.parentNode, t);
     					}
     				}
 
@@ -2950,7 +2951,7 @@ var app = (function () {
     				if (if_block) ; else {
     					if_block = create_if_block_1(ctx);
     					if_block.c();
-    					if_block.m(div1, null);
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
     			} else if (if_block) {
     				if_block.d(1);
@@ -2958,9 +2959,10 @@ var app = (function () {
     			}
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div1);
     			destroy_each(each_blocks, detaching);
-    			if (if_block) if_block.d();
+    			if (detaching) detach_dev(t);
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
     		}
     	};
 
@@ -2968,14 +2970,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(49:6) {#if ws}",
+    		source: "(50:8) {#if ws}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (52:12) {#each ws2.splice(0, 105) as w}
+    // (51:10) {#each ws2.splice(0, 100) as w}
     function create_each_block(ctx) {
     	let div;
     	let a;
@@ -2991,7 +2993,6 @@ var app = (function () {
     	let img;
     	let img_src_value;
     	let img_alt_value;
-    	let t4;
 
     	const block = {
     		c: function create() {
@@ -3004,21 +3005,20 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			img = element("img");
-    			t4 = space();
-    			attr_dev(h4, "class", "svelte-tm6yyy");
-    			add_location(h4, file$1, 56, 18, 1731);
+    			attr_dev(h4, "class", "svelte-q79ugn");
+    			add_location(h4, file$1, 55, 16, 1675);
     			attr_dev(a, "href", a_href_value = "https://anilist.co/character/" + /*w*/ ctx[8].ID);
     			attr_dev(a, "title", "view on anilist");
-    			attr_dev(a, "class", "svelte-tm6yyy");
-    			add_location(a, file$1, 53, 16, 1601);
-    			attr_dev(p, "class", "svelte-tm6yyy");
-    			add_location(p, file$1, 60, 16, 1826);
+    			attr_dev(a, "class", "svelte-q79ugn");
+    			add_location(a, file$1, 52, 14, 1551);
+    			attr_dev(p, "class", "svelte-q79ugn");
+    			add_location(p, file$1, 59, 14, 1762);
     			if (img.src !== (img_src_value = /*w*/ ctx[8].Image)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", img_alt_value = /*w*/ ctx[8].Name);
-    			attr_dev(img, "class", "svelte-tm6yyy");
-    			add_location(img, file$1, 61, 16, 1856);
-    			attr_dev(div, "class", "waifu-card svelte-tm6yyy");
-    			add_location(div, file$1, 52, 14, 1560);
+    			attr_dev(img, "class", "svelte-q79ugn");
+    			add_location(img, file$1, 60, 14, 1790);
+    			attr_dev(div, "class", "waifu-card svelte-q79ugn");
+    			add_location(div, file$1, 51, 12, 1512);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3030,7 +3030,6 @@ var app = (function () {
     			append_dev(p, t2);
     			append_dev(div, t3);
     			append_dev(div, img);
-    			append_dev(div, t4);
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*ws2*/ 4 && t0_value !== (t0_value = /*w*/ ctx[8].Name + "")) set_data_dev(t0, t0_value);
@@ -3058,14 +3057,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(52:12) {#each ws2.splice(0, 105) as w}",
+    		source: "(51:10) {#each ws2.splice(0, 100) as w}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (66:10) {#if ws.length > 100}
+    // (64:10) {#if ws.length > 100}
     function create_if_block_1(ctx) {
     	let h4;
 
@@ -3073,8 +3072,8 @@ var app = (function () {
     		c: function create() {
     			h4 = element("h4");
     			h4.textContent = "Search to list more...";
-    			attr_dev(h4, "class", "search-more svelte-tm6yyy");
-    			add_location(h4, file$1, 66, 12, 1997);
+    			attr_dev(h4, "class", "search-more svelte-q79ugn");
+    			add_location(h4, file$1, 64, 12, 1910);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h4, anchor);
@@ -3088,7 +3087,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(66:10) {#if ws.length > 100}",
+    		source: "(64:10) {#if ws.length > 100}",
     		ctx
     	});
 
@@ -3128,7 +3127,6 @@ var app = (function () {
     	let meta4;
     	let t;
     	let main;
-    	let div;
     	let promise;
     	let current;
 
@@ -3155,7 +3153,6 @@ var app = (function () {
     			meta4 = element("meta");
     			t = space();
     			main = element("main");
-    			div = element("div");
     			info.block.c();
     			attr_dev(meta0, "property", "og:type");
     			attr_dev(meta0, "content", "WaifuGUI");
@@ -3172,9 +3169,7 @@ var app = (function () {
     			attr_dev(meta4, "property", "og:image");
     			attr_dev(meta4, "content", "https://waifugui.kar.moe/favicon.png");
     			add_location(meta4, file$1, 22, 2, 660);
-    			attr_dev(div, "class", "wrapper svelte-tm6yyy");
-    			add_location(div, file$1, 26, 2, 761);
-    			attr_dev(main, "class", "svelte-tm6yyy");
+    			attr_dev(main, "class", "svelte-q79ugn");
     			add_location(main, file$1, 25, 0, 752);
     		},
     		l: function claim(nodes) {
@@ -3188,9 +3183,8 @@ var app = (function () {
     			append_dev(document.head, meta4);
     			insert_dev(target, t, anchor);
     			insert_dev(target, main, anchor);
-    			append_dev(main, div);
-    			info.block.m(div, info.anchor = null);
-    			info.mount = () => div;
+    			info.block.m(main, info.anchor = null);
+    			info.mount = () => main;
     			info.anchor = null;
     			current = true;
     		},
