@@ -1,5 +1,5 @@
 import { For } from "solid-js";
-import { Char } from "../api/liste";
+import { Char } from "../../api/list";
 import CharCard from "./char/Card";
 import { CharFilterValue } from "./nav/Filter";
 import { ShowAllValue } from "./nav/ShowAllButton";

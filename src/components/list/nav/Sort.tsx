@@ -1,21 +1,21 @@
 import { createSignal, For } from "solid-js";
-import { Char } from "../../api/liste";
+import { Char } from "../../../api/list";
 
 const fns = [
-  { name: "Name", fn: (a: Char, b: Char) => a.name.localeCompare(b.name) },
   {
-    name: "Name desc",
-    fn: (a: Char, b: Char) => -a.name.localeCompare(b.name),
+    name: "Date desc",
+    fn: (a: Char, b: Char) =>
+      -(new Date(a.date).getTime() - new Date(b.date).getTime()),
   },
   {
     name: "Date",
     fn: (a: Char, b: Char) =>
       new Date(a.date).getTime() - new Date(b.date).getTime(),
   },
+  { name: "Name", fn: (a: Char, b: Char) => a.name.localeCompare(b.name) },
   {
-    name: "Date desc",
-    fn: (a: Char, b: Char) =>
-      -(new Date(a.date).getTime() - new Date(b.date).getTime()),
+    name: "Name desc",
+    fn: (a: Char, b: Char) => -a.name.localeCompare(b.name),
   },
   { name: "ID", fn: (a: Char, b: Char) => a.id - b.id },
   { name: "ID desc", fn: (a: Char, b: Char) => -(a.id - b.id) },

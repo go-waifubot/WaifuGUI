@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js";
-import type { Char } from "../../api/liste";
+import type { Char } from "../../../api/list";
 
 const filterFn = (v: string) => (a: Char) => {
   return (

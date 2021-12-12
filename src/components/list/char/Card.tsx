@@ -1,11 +1,13 @@
-import { Char } from "../../api/liste";
+import { Char } from "../../../api/list";
 
 export default (props: { char: Char; colored?: boolean }) => {
   return (
     <div
       class="shadow-md shadow-zinc-900 rounded-md flex flex-col text-center pb-4 w-full bg-neutral-800"
       style={{
-        "box-shadow": props.colored ? `2px 1px rgb(134 239 172 / 0.5)` : "",
+        "box-shadow": `3px 3px rgb(${
+          props.colored ? "134 239 172" : "0 0 0"
+        } / 0.5)`,
       }}
     >
       <div id="char-img" class="top-0 left-0">

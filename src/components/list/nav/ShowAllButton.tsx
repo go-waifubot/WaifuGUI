@@ -1,5 +1,5 @@
 import { createSignal, Show } from "solid-js";
-import GhostButton from "../generic/GhostButton";
+import GhostButton from "../../generic/GhostButton";
 
 const [showAllValue, update] = createSignal(true);
 export const ShowAllValue = showAllValue;
