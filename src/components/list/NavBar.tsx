@@ -1,3 +1,4 @@
+import { useNavigate } from "solid-app-router";
 import list from "../../api/list";
 import GhostButton from "../generic/GhostButton";
 import { CharFilter } from "./nav/Filter";
@@ -6,6 +7,7 @@ import { CharSort } from "./nav/Sort";
 
 export default (props: { setChars: any }) => {
   let inputref: HTMLInputElement = {} as HTMLInputElement;
+  const nav = useNavigate();
 
   return (
     <nav class="p-2 h-16 flex flex-row flex-grow content-center fixed w-full z-10 bg-green-300">
@@ -39,7 +41,8 @@ export default (props: { setChars: any }) => {
           <GhostButton
             type="submit"
             onClick={async () => {
-              const user = await list({ user: inputref.value });
+              nav(`/list/${inputref.value}`);
+              const user = await list(inputref.value);
               props.setChars(user.waifus);
             }}
           >

@@ -1,5 +1,5 @@
-export default async (prop: { user: string }) => {
-  return await fetch(`https://waifuapi.kar.moe/user/${prop.user}`)
+export default async (userID: string) => {
+  return await fetch(`https://waifuapi.karitham.dev/user/${userID}`)
     .then((res) => res.json())
     .then((res) => res as User);
 };
