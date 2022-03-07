@@ -45,7 +45,9 @@ export default (props: { char: Char; colored?: boolean }) => {
         </p>
         <p class="text-neutral-300 pt-1 text-sm inline-flex gap-2">
           <Fa icon={faBookAtlas} translateY="0.2px" />
-          {props.char.type.toLowerCase()}
+          {props.char.type === "OLD"
+            ? "unknown"
+            : props.char.type.toLowerCase()}
         </p>
       </div>
     </div>

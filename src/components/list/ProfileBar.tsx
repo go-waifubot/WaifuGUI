@@ -48,7 +48,9 @@ export default (props: {
             </p>
             <p class="text-neutral-300 pt-1 text-sm inline-flex gap-2">
               <Fa icon={faBookAtlas} translateY="0.2px" />
-              {props.favorite?.type.toLowerCase()}
+              {props.favorite?.type === "OLD"
+                ? "unknown"
+                : props.favorite?.type.toLowerCase()}
             </p>
           </div>
         </div>
