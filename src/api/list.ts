@@ -14,6 +14,6 @@ export interface Char {
   id: number;
   image: string;
   name: string;
-  date: Date;
+  date: string;
   type: string;
 }

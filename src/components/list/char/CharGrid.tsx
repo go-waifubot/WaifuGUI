@@ -1,9 +1,9 @@
 import { For } from "solid-js";
-import { Char } from "../../api/list";
-import CharCard from "./char/Card";
-import { CharFilterValue } from "./nav/Filter";
-import { ShowAllValue } from "./nav/ShowAllButton";
-import { CharSortValue } from "./nav/Sort";
+import { Char } from "../../../api/list";
+import CharCard from "../char/Card";
+import { CharFilterValue } from "../nav/Filter";
+import { ShowAllValue } from "../nav/ShowAllButton";
+import { CharSortValue } from "../nav/Sort";
 
 export default (props: {
   filter?: (char: Char) => boolean;
@@ -23,18 +23,19 @@ export default (props: {
   return (
     <div
       id="list"
-      class="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-8 gap-4 justify-center"
+      class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 min-h-screen"
     >
-      <For
-        each={chars()}
-        fallback={
-          <div class="text-5xl text-center text-green-300 col-span-full pt-48">
-            No characters to display :(
-          </div>
-        }
-      >
+      <For each={chars()} fallback={fallback}>
         {(char: Char) => <CharCard char={char} colored={false} />}
       </For>
+    </div>
+  );
+};
+
+const fallback = () => {
+  return (
+    <div class="text-2xl text-center text-neutral-100 col-span-full pt-48">
+      No characters to display :(
     </div>
   );
 };

@@ -6,7 +6,7 @@ export const ShowAllValue = showAllValue;
 export default () => (
   <GhostButton onClick={() => update((b) => !b)}>
     <Show when={showAllValue()} fallback="Show Less">
-      Show All
+      View All
     </Show>
   </GhostButton>
 );

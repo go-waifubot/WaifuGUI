@@ -1,3 +1,5 @@
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import Fa from "solid-fa";
 import { createSignal } from "solid-js";
 import type { Char } from "../../../api/list";
 
@@ -14,27 +16,29 @@ export const CharFilterValue = charFilterValue;
 
 export const CharFilter = () => {
   return (
-    <div className="search-input">
+    <div class="inline-flex">
       <input
         type="text"
         onInput={(e) => {
-          charFilterSet(() => filterFn(e.currentTarget.value ?? ""));
+          charFilterSet(() => filterFn(e.currentTarget.value));
         }}
         placeholder="Filter characters"
-        class="flex
-      focus:outline-none
-      focus:ring-0
-      focus:border-white
-      justify-center
-      bg-inherit
-      rounded-md
-      border-2
-      border-neutral-800
-      text-neutral-800
-      placeholder:text-neutral-600
-      overflow-hidden
-      p-2"
+        class="
+        flex
+        focus:outline-none
+        bg-inherit
+        border-b-2
+        border-pink-500
+        placeholder:text-neutral-600
+        text-neutral-100
+        overflow-clip
+        
+        m-2
+        p-2
+        "
+        value=""
       />
+      <Fa icon={faSearch} color="white" translateY={1.2} />
     </div>
   );
 };
