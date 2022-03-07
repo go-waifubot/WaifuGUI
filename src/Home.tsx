@@ -1,4 +1,5 @@
 import { useNavigate } from "solid-app-router";
+import YMDImage from "/src/assets/YMD.png";
 
 export default () => {
   let inputref: HTMLInputElement = {} as HTMLInputElement;
@@ -10,7 +11,7 @@ export default () => {
         <div>
           <h1 class="text-5xl p-8 text-center text-pink-400">WaifuGUI</h1>
         </div>
-        <img src="src/assets/YMD.png" alt="icon" class="m-auto" />
+        <img src={YMDImage} alt="icon" class="m-auto" />
         <div class="p-8 flex flex-row gap-2 justify-center items-center ">
           <input
             class="bg-inherit border-2 border-pink-500 rounded-md p-3 w-64"
