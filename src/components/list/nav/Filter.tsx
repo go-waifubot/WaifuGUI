@@ -7,7 +7,7 @@ const filterFn = (v: string) => (a: Char) => {
   return (
     v.length < 2 ||
     a.id.toString().includes(v) ||
-    (v.length >= 2 && a.name.toLowerCase().includes(v))
+    (v.length >= 2 && a.name.toLowerCase().includes(v.toLowerCase()))
   );
 };
 
