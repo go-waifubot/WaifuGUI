@@ -23,7 +23,7 @@ export default (props: {
   return (
     <div
       id="list"
-      class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 min-h-screen"
+      class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
     >
       <For each={chars()} fallback={fallback}>
         {(char: Char) => <CharCard char={char} colored={false} />}

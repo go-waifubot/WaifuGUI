@@ -39,7 +39,7 @@ export default () => {
           </div>
         </nav>
         <div id="content" class="align-baseline my-8">
-          <section about="list" class="px-4">
+          <section about="list" class="px-4 min-h-screen">
             <CharGrid characters={chars()} />
           </section>
         </div>

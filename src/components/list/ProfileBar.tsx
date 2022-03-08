@@ -6,6 +6,7 @@ import {
 import { marked } from "marked";
 import Fa from "solid-fa";
 import { Show } from "solid-js";
+import { createGlobalStyles } from "solid-styled-components";
 import { Char } from "../../api/list";
 
 export default (props: {
@@ -56,7 +57,9 @@ export default (props: {
         </div>
       </Show>
       <Show when={props.about && props.about != ""}>
+        <AboutLinks />
         <p
+          id="about"
           class="text-neutral-100 text-sm border-l-2 p-2 border-x-pink-400 h-max break-all"
           innerHTML={marked.parse(props.about?.replaceAll("\n", "\n\n") ?? "")}
         />
@@ -64,3 +67,12 @@ export default (props: {
     </div>
   );
 };
+
+const AboutLinks = createGlobalStyles`
+    #about a {
+      color: rgb(244 114 182);
+    }
+    #about a:hover {
+      color: rgb(236 72 153);
+    }
+`;
