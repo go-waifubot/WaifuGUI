@@ -15,7 +15,7 @@ export default (props: {
   about: string | undefined;
 }) => {
   return (
-    <div class="right-0 flex flex-col px-3 py-8 gap-8 h-100">
+    <div class="flex flex-col px-3 py-8 gap-8">
       <Show when={props.favorite && props.favorite.name !== ""}>
         <div class="flex flex-row">
           <img
@@ -23,7 +23,7 @@ export default (props: {
             class="object-cover w-36 rounded-sm"
             alt={`image of the character ${props.favorite?.name}`}
           />
-          <div id="char-description" class="p-3 max-w-min w-fit flex-row gap-3">
+          <div id="char-description" class="p-3 w-fit flex-row gap-3">
             <a
               class="text-xl capitalize w-max text-neutral-100"
               target="_blank"
@@ -32,6 +32,7 @@ export default (props: {
             >
               {props.favorite?.name}
             </a>
+            <br />
             <button
               class="text-neutral-400 pt-1 text-sm inline-flex gap-2 hover:text-neutral-50"
               onclick={() =>
@@ -43,10 +44,12 @@ export default (props: {
               <Fa icon={faCopy} translateY="0.2px" />
               {props.favorite?.id}
             </button>
+            <br />
             <p class="text-neutral-200 pt-1 text-sm inline-flex gap-2">
               <Fa icon={faCalendar} translateY="0.2px" />
               {new Date(props.favorite?.date ?? "").toLocaleDateString()}
             </p>
+            <br />
             <p class="text-neutral-300 pt-1 text-sm inline-flex gap-2">
               <Fa icon={faBookAtlas} translateY="0.2px" />
               {props.favorite?.type === "OLD"

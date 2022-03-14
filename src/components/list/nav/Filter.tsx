@@ -24,6 +24,7 @@ export const CharFilter = () => {
         }}
         placeholder="Filter characters"
         class="
+        w-full
         flex
         focus:outline-none
         bg-inherit
@@ -32,9 +33,8 @@ export const CharFilter = () => {
         placeholder:text-neutral-600
         text-neutral-100
         overflow-clip
-        
-        m-2
-        p-2
+        my-2
+        py-2
         "
         value=""
       />

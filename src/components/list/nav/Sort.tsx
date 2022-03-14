@@ -39,6 +39,7 @@ export const CharSort = () => {
         onClick={(e) => charSortSet(() => sortFn(e.currentTarget.value))}
         class="
         flex
+        w-full
         focus:outline-none
         bg-inherit
         border-b-2
@@ -46,10 +47,8 @@ export const CharSort = () => {
         placeholder:text-neutral-600
         text-neutral-100
         overflow-clip
-
-        w-72
-        m-2
-        p-2
+        my-2
+        py-2
         "
       >
         <For each={fns}>

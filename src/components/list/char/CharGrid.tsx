@@ -18,12 +18,17 @@ export default (props: {
     return props.characters
       .sort(s)
       .filter(f)
-      .slice(0, cut ? 200 : props.characters.length);
+      .slice(0, cut ? 250 : props.characters.length);
   };
+
   return (
     <div
       id="list"
-      class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+      class="grid gap-4 w-100"
+      style={{
+        "grid-auto-flow": "rows dense",
+        "grid-template-columns": "repeat(auto-fit, minmax(225px, 1fr))",
+      }}
     >
       <For each={chars()} fallback={fallback}>
         {(char: Char) => <CharCard char={char} colored={false} />}
