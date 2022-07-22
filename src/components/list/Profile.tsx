@@ -56,6 +56,7 @@ export default (props: {
               <AboutLinks />
               <p
                 id="about"
+                class="break-all"
                 innerHTML={marked.parse(
                   props.about?.replaceAll("\n", "\n\n") ?? ""
                 )}
