@@ -23,7 +23,7 @@ export default (props: { char: Char; colored?: boolean }) => {
       />
       <div id="char-description" class="p-3 flex-row flex-1 gap-3">
         <a
-          class="text-lg capitalize text-neutral-100"
+          class="text-md capitalize text-neutral-100 hover:underline-offset-2 hover:underline"
           target="_blank"
           rel="noopener noreferrer"
           href={`https://anilist.co/character/${props.char.id}`}
@@ -32,7 +32,7 @@ export default (props: { char: Char; colored?: boolean }) => {
         </a>
         <br />
         <button
-          class="text-neutral-400 pt-1 text-sm inline-flex gap-2 hover:text-neutral-50"
+          class="text-neutral-200 pt-1 text-xs inline-flex gap-2 hover:text-neutral-50"
           onclick={() =>
             navigator.clipboard.writeText(props.char.id.toString())
           }
@@ -41,12 +41,12 @@ export default (props: { char: Char; colored?: boolean }) => {
           {props.char.id}
         </button>
         <br />
-        <p class="text-neutral-200 pt-1 text-sm inline-flex gap-2">
+        <p class="text-neutral-200 pt-1 text-xs inline-flex gap-2">
           <Fa icon={faCalendar} translateY="0.2px" />
           {new Date(props.char.date).toLocaleDateString()}
         </p>
         <br />
-        <p class="text-neutral-200 pt-1 text-sm inline-flex gap-2">
+        <p class="text-neutral-200 pt-1 text-xs inline-flex gap-2">
           <Fa icon={faBookAtlas} translateY="0.2px" />
           {props.char.type === "OLD"
             ? "unknown"

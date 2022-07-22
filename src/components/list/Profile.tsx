@@ -23,40 +23,49 @@ export default (props: {
             class="object-cover max-h-fit rounded-sm"
             alt={`image of the character ${props.favorite?.name}`}
           />
-          <div id="char-description" class="px-8 flex flex-col gap-4">
-            <a
-              class="text-xl capitalize w-max text-neutral-50"
-              target="_blank"
-              rel="noopener noreferrer"
-              href={`https://anilist.co/character/${props.favorite?.id}`}
-            >
-              {props.favorite?.name}
-            </a>
-            <button
-              class="text-neutral-300 text-sm inline-flex gap-2 hover:text-neutral-50"
-              onclick={() => {
-                if (props.favorite?.id)
-                  navigator.clipboard.writeText(props.favorite?.id.toString());
-              }}
-            >
-              <Fa icon={faCopy} translateY="0.2px" />
-              {props.favorite?.id}
-            </button>
-            <p class="text-neutral-300 text-sm inline-flex gap-2">
-              <Fa icon={faCalendar} translateY="0.2px" />
-              {new Date(props.favorite?.date ?? "").toLocaleDateString()}
-            </p>
-            <p class="text-neutral-300 text-sm inline-flex gap-2">
-              <Fa icon={faBookAtlas} translateY="0.2px" />
-              {props.favorite?.type === "OLD"
-                ? "unknown"
-                : props.favorite?.type.toLowerCase()}
-            </p>
+          <div id="char-description" class="px-8 flex flex-col gap-6">
+            <div id="card" class="flex flex-col gap-2">
+              <a
+                class="text-xl capitalize w-max text-neutral-50"
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`https://anilist.co/character/${props.favorite?.id}`}
+              >
+                {props.favorite?.name}
+              </a>
+              <button
+                class="text-neutral-300 text-sm inline-flex gap-2 hover:text-neutral-50"
+                onclick={() => {
+                  if (props.favorite?.id)
+                    navigator.clipboard.writeText(
+                      props.favorite?.id.toString()
+                    );
+                }}
+              >
+                <Fa icon={faCopy} translateY="0.2px" />
+                {props.favorite?.id}
+              </button>
+              <p class="text-neutral-300 text-sm inline-flex gap-2">
+                <Fa icon={faCalendar} translateY="0.2px" />
+                {new Date(props.favorite?.date ?? "").toLocaleDateString()}
+              </p>
+              <p class="text-neutral-300 text-sm inline-flex gap-2">
+                <Fa icon={faBookAtlas} translateY="0.2px" />
+                {props.favorite?.type === "OLD"
+                  ? "unknown"
+                  : props.favorite?.type.toLowerCase()}
+              </p>
+            </div>
             <Show when={props.about && props.about != ""}>
               <AboutLinks />
               <p
                 id="about"
-                class="break-all"
+                class=""
+                style={{
+                  hyphens: "auto",
+                  overflow: "hidden",
+                  "word-break": "break-word",
+                }}
                 innerHTML={marked.parse(
                   props.about?.replaceAll("\n", "\n\n") ?? ""
                 )}
