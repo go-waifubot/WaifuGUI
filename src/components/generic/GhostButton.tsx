@@ -9,7 +9,7 @@ export default (props: {
     <button
       type={props.type ?? "button"}
       onClick={props.onClick}
-      class="rounded-md border-2 border-pink-500 text-neutral-100 px-2 py-1"
+      class="rounded-md border-2 border-orange-400 hover:border-orange-50 text-neutral-100 h-12 px-4 py-2"
     >
       {props.children ?? {}}
     </button>

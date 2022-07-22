@@ -1,5 +1,3 @@
-import { faSort } from "@fortawesome/free-solid-svg-icons";
-import Fa from "solid-fa";
 import { createSignal, For } from "solid-js";
 import { Char } from "../../../api/list";
 
@@ -34,7 +32,7 @@ const sortFn =
 
 export const CharSort = () => {
   return (
-    <div class="inline-flex w-100">
+    <div class="inline-flex h-12 gap-2">
       <select
         onClick={(e) => charSortSet(() => sortFn(e.currentTarget.value))}
         class="
@@ -43,12 +41,11 @@ export const CharSort = () => {
         focus:outline-none
         bg-inherit
         border-b-2
-        border-pink-500
+        border-orange-400
+        hover:border-orange-50
         placeholder:text-neutral-600
         text-neutral-100
         overflow-clip
-        my-2
-        py-2
         "
       >
         <For each={fns}>
@@ -59,9 +56,6 @@ export const CharSort = () => {
           )}
         </For>
       </select>
-      <div class="right-0">
-        <Fa icon={faSort} color="white" translateY={1.2} />
-      </div>
     </div>
   );
 };

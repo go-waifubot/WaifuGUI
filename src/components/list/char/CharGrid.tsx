@@ -24,7 +24,7 @@ export default (props: {
   return (
     <div
       id="list"
-      class="grid gap-4 w-100"
+      class="grid gap-6 w-100"
       style={{
         "grid-auto-flow": "rows dense",
         "grid-template-columns": "repeat(auto-fit, minmax(225px, 1fr))",
@@ -39,7 +39,7 @@ export default (props: {
 
 const fallback = () => {
   return (
-    <div class="text-2xl text-center text-neutral-100 col-span-full pt-48">
+    <div class="text-2xl text-center text-neutral-100 col-span-full">
       No characters to display :(
     </div>
   );

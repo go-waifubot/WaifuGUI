@@ -1,5 +1,3 @@
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import Fa from "solid-fa";
 import { createSignal } from "solid-js";
 import type { Char } from "../../../api/list";
 
@@ -16,7 +14,7 @@ export const CharFilterValue = charFilterValue;
 
 export const CharFilter = () => {
   return (
-    <div class="inline-flex">
+    <div class="inline-flex h-12 gap-2">
       <input
         type="text"
         onInput={(e) => {
@@ -29,16 +27,14 @@ export const CharFilter = () => {
         focus:outline-none
         bg-inherit
         border-b-2
-        border-pink-500
+        border-orange-400
+        hover:border-orange-50
         placeholder:text-neutral-600
         text-neutral-100
         overflow-clip
-        my-2
-        py-2
         "
         value=""
       />
-      <Fa icon={faSearch} color="white" translateY={1.2} />
     </div>
   );
 };
