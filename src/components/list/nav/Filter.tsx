@@ -12,29 +12,31 @@ const filterFn = (v: string) => (a: Char) => {
 const [charFilterValue, charFilterSet] = createSignal(filterFn(""));
 export const CharFilterValue = charFilterValue;
 
-export const CharFilter = () => {
+export const CharFilter = (props: { class?: string }) => {
   return (
-    <div class="inline-flex h-12 gap-2">
-      <input
-        type="text"
-        onInput={(e) => {
-          charFilterSet(() => filterFn(e.currentTarget.value));
-        }}
-        placeholder="Filter characters"
-        class="
-        w-full
+    <input
+      type="text"
+      onInput={(e) => {
+        charFilterSet(() => filterFn(e.currentTarget.value));
+      }}
+      id="char-filter"
+      placeholder="Filter characters"
+      class="
         flex
         focus:outline-none
         bg-inherit
         border-b-2
+        h-12
         border-orange-400
         hover:border-orange-50
         placeholder:text-neutral-600
         text-neutral-100
         overflow-clip
         "
-        value=""
-      />
-    </div>
+      classList={{
+        [props.class!]: !!props.class,
+      }}
+      value=""
+    />
   );
 };

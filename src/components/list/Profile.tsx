@@ -1,19 +1,38 @@
-import {
-  faBookAtlas,
-  faCalendar,
-  faCopy,
-} from "@fortawesome/free-solid-svg-icons";
 import { marked } from "marked";
-import Fa from "solid-fa";
 import { Show } from "solid-js";
 import { createGlobalStyles } from "solid-styled-components";
 import { Char } from "../../api/list";
+import CardRight from "./char/CardRIght";
 
 export default (props: {
   favorite: Char | undefined;
   user: string | undefined;
+  anilist_url: string | undefined;
   about: string | undefined;
 }) => {
+  const Favorite = !!props.favorite ? (
+    <CardRight char={props.favorite} />
+  ) : (
+    <></>
+  );
+
+  const username =
+    props.anilist_url?.split(/https:\/\/anilist.co\/user\/([\w\d]+)/g)?.[1] ??
+    props.user;
+
+  const Username = !!props.anilist_url ? (
+    <a
+      class="text-neutral-100 hover:underline-offset-2 w-min hover:underline"
+      target="_blank"
+      rel="noopener noreferrer"
+      href={props.anilist_url}
+    >
+      <h2 class="text-4xl">{username}</h2>
+    </a>
+  ) : (
+    <></>
+  );
+
   return (
     <>
       <Show when={props.favorite && props.favorite.name !== ""}>
@@ -24,38 +43,9 @@ export default (props: {
             alt={`image of the character ${props.favorite?.name}`}
           />
           <div id="char-description" class="px-8 flex flex-col gap-6">
-            <div id="card" class="flex flex-col gap-2">
-              <a
-                class="text-xl capitalize w-max text-neutral-50"
-                target="_blank"
-                rel="noopener noreferrer"
-                href={`https://anilist.co/character/${props.favorite?.id}`}
-              >
-                {props.favorite?.name}
-              </a>
-              <button
-                class="text-neutral-300 text-sm inline-flex gap-2 hover:text-neutral-50"
-                onclick={() => {
-                  if (props.favorite?.id)
-                    navigator.clipboard.writeText(
-                      props.favorite?.id.toString()
-                    );
-                }}
-              >
-                <Fa icon={faCopy} translateY="0.2px" />
-                {props.favorite?.id}
-              </button>
-              <p class="text-neutral-300 text-sm inline-flex gap-2">
-                <Fa icon={faCalendar} translateY="0.2px" />
-                {new Date(props.favorite?.date ?? "").toLocaleDateString()}
-              </p>
-              <p class="text-neutral-300 text-sm inline-flex gap-2">
-                <Fa icon={faBookAtlas} translateY="0.2px" />
-                {props.favorite?.type === "OLD"
-                  ? "unknown"
-                  : props.favorite?.type.toLowerCase()}
-              </p>
-            </div>
+            {Username}
+            {Favorite}
+
             <Show when={props.about && props.about != ""}>
               <AboutLinks />
               <p

@@ -1,28 +1,27 @@
 import { useParams } from "solid-app-router";
-import { createResource, createSignal, Show } from "solid-js";
-import list, { Char, User } from "./api/list";
-import CharGrid from "./components/list/char/CharGrid";
+import { createResource, Show } from "solid-js";
+import List from "./components/list/List";
+import list from "./api/list";
 import NavBar from "./components/list/Nav";
 import ProfileBar from "./components/list/Profile";
 
 export default () => {
-  const [chars, setChars] = createSignal<Char[]>([]);
-  var userProfile: Partial<User> = {};
-
-  async function loadUser(id: string) {
-    const u = await list(id);
-    setChars(u.waifus);
-    userProfile = u;
-  }
-
   const { id } = useParams();
-  const [user] = createResource(id, loadUser);
+  const [user] = createResource(id, async () => {
+    const { data: user, error } = await list(id);
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    return user;
+  });
 
   return (
     <Show when={!user.loading}>
       <main class="bg-neutral-900 min-h-screen flex justify-center px-8 py-16">
         <div
-          class="flex flex-col gap-12 items-stretch justify-center text-white"
+          class="flex flex-col gap-12 items-stretch text-white"
           style={{
             "max-width": "70rem",
             width: "100%",
@@ -30,11 +29,12 @@ export default () => {
         >
           <NavBar />
           <ProfileBar
-            favorite={userProfile.favorite}
-            about={userProfile.quote}
-            user={userProfile.id}
+            favorite={user()?.favorite!}
+            about={user()?.quote!}
+            user={user()?.id}
+            anilist_url={user()?.anilist_url}
           />
-          <CharGrid characters={chars()} />
+          <List characters={user()?.waifus ?? []} />
         </div>
       </main>
     </Show>

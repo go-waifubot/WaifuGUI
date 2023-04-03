@@ -30,15 +30,14 @@ const sortFn =
   (a: Char, b: Char): number =>
     fns.find((f) => f.name == name)?.fn(a, b) as number;
 
-export const CharSort = () => {
+export const CharSort = (props: { class?: string }) => {
   return (
-    <div class="inline-flex h-12 gap-2">
-      <select
-        onClick={(e) => charSortSet(() => sortFn(e.currentTarget.value))}
-        class="
+    <select
+      onClick={(e) => charSortSet(() => sortFn(e.currentTarget.value))}
+      class="
         flex
-        w-full
         focus:outline-none
+        h-12
         bg-inherit
         border-b-2
         border-orange-400
@@ -47,15 +46,17 @@ export const CharSort = () => {
         text-neutral-100
         overflow-clip
         "
-      >
-        <For each={fns}>
-          {(fn: { name: string; fn: (a: Char, b: Char) => number }) => (
-            <option value={fn.name} class="bg-neutral-900 text-neutral-200">
-              {fn.name}
-            </option>
-          )}
-        </For>
-      </select>
-    </div>
+      classList={{
+        [props.class!]: !!props.class,
+      }}
+    >
+      <For each={fns}>
+        {(fn: { name: string; fn: (a: Char, b: Char) => number }) => (
+          <option value={fn.name} class="bg-neutral-900 text-neutral-200">
+            {fn.name}
+          </option>
+        )}
+      </For>
+    </select>
   );
 };
