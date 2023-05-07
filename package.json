@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "marked": "^4.3.0",
-    "solid-js": "^1.7.5",
-    "solid-styled-components": "^0.28.5"
+    "solid-js": "^1.7.5"
   }
 }
