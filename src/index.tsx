@@ -1,6 +1,14 @@
 import { render } from "solid-js/web";
-import "tailwindcss/tailwind.css";
-import App from "./App";
 import "./index.css";
+import "uno.css";
+import { Router, hashIntegration } from "@solidjs/router";
+import App from "./App";
 
-render(() => <App />, document.getElementById("root") as HTMLElement);
+render(
+  () => (
+    <Router source={hashIntegration()}>
+      <App />
+    </Router>
+  ),
+  document.getElementById("app")!
+);

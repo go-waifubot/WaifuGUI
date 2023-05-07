@@ -15,11 +15,6 @@ export interface Char {
   type: string;
 }
 
-type DataError = {
-  message: string;
-  code: string;
-};
-
 export type AsyncTuple<
   ErrorType extends any = Error,
   DataType extends any = unknown
@@ -54,7 +49,10 @@ export const until = async <
 export const getUser = async (anilistUsername: string) => {
   return until(() =>
     fetch(
-      `${ROOT_URL}/user/find?anilist=${encodeURIComponent(anilistUsername)}`
+      `${ROOT_URL}/user/find?anilist=${encodeURIComponent(anilistUsername)}`,
+      {
+        cache: "force-cache",
+      }
     )
       .then((res) => res.json())
       .then(
@@ -68,7 +66,9 @@ export const getUser = async (anilistUsername: string) => {
 
 export const getList = async (userID: string) => {
   return until(() =>
-    fetch(`https://waifuapi.karitham.dev/user/${userID}`)
+    fetch(`https://waifuapi.karitham.dev/user/${userID}`, {
+      cache: "force-cache",
+    })
       .then((res) => res.json())
       .then((res) => res as User)
   );

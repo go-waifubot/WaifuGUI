@@ -10,12 +10,12 @@ export default (props: {
     <button
       type={props.type ?? "button"}
       onClick={props.onClick}
-      class="rounded-md border-2 border-orange-400 hover:border-orange-50 text-neutral-100 h-12 px-4 py-2"
+      class="rounded-md font-sans border-blue hover:cursor-pointer bg-base text-text p-4 focus:outline-none"
       classList={{
         [props.class!]: !!props.class,
       }}
     >
-      {props.children ?? {}}
+      {props.children}
     </button>
   );
 };

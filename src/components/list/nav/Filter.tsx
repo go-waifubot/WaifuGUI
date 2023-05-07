@@ -22,21 +22,20 @@ export const CharFilter = (props: { class?: string }) => {
       id="char-filter"
       placeholder="Filter characters"
       class="
-        flex
+        p-4
         focus:outline-none
-        bg-inherit
-        border-b-2
-        h-12
-        border-orange-400
-        hover:border-orange-50
-        placeholder:text-neutral-600
-        text-neutral-100
+        bg-base
+        placeholder:font-sans
+        rounded-md
+        border-blue
+        hover:cursor-text
+        placeholder:text-overlayA
+        text-text
         overflow-clip
         "
       classList={{
         [props.class!]: !!props.class,
       }}
-      value=""
     />
   );
 };

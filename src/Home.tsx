@@ -1,4 +1,4 @@
-import { useNavigate, type Navigator } from "solid-app-router";
+import { useNavigate, type Navigator } from "@solidjs/router";
 import { getUser } from "./api/list";
 import GhostButton from "./components/generic/GhostButton";
 import Icon from "/src/assets/icon.png";
@@ -18,28 +18,31 @@ export default () => {
   let inputref: HTMLInputElement = {} as HTMLInputElement;
   const nav = useNavigate();
 
+  const Bar = () => (
+    <div class="flex flex-col gap-2">
+      <label class="text-sm">Discord ID</label>
+      <input
+        class="rounded-md font-sans max-w-full border-blue bg-base hover:border-indigo text-text p-4 focus:outline-none"
+        type="text"
+        name="user-input"
+        alt="user-input"
+        placeholder="206794847581896705"
+        ref={inputref}
+        onKeyPress={(e) => e.key === "Enter" && userOrList(nav, inputref.value)}
+      />
+    </div>
+  );
+
   return (
-    <main class="bg-neutral-900 h-screen w-screen selection:bg-zinc-700">
-      <div class="flex flex-col gap-16 pt-36 items-center justify-center text-white">
-        <img src={Icon} alt="icon" class="m-auto" />
-        <div class="p-8 flex flex-row gap-6">
-          <label for="user-input">
-            Discord ID
-            <input
-              class="bg-inherit border-b-2 border-b-orange-400 hover:border-b-orange-50 focus-visible:b-orange-50 ml-2 p-3 w-64 focus:outline-none"
-              type="text"
-              name="user-input"
-              alt="user-input"
-              placeholder="206794847581896705"
-              ref={inputref}
-              onKeyPress={(e) =>
-                e.key === "Enter" && userOrList(nav, inputref.value)
-              }
-            />
-          </label>
+    <main class="bg-base h-screen w-screen font-sans selection:bg-overlayC">
+      <div class="flex flex-col gap-16 pt-36 items-center justify-center text-text">
+        <img src={Icon} alt="icon" />
+        <div class="flex flex-row gap-6 items-end bg-mantle p-6 rounded-xl">
+          <Bar />
           <GhostButton
             onClick={() => userOrList(nav, inputref.value)}
             type="submit"
+            class="h-13"
           >
             Search
           </GhostButton>

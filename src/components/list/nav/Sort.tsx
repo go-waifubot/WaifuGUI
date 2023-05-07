@@ -37,13 +37,14 @@ export const CharSort = (props: { class?: string }) => {
       class="
         flex
         focus:outline-none
-        h-12
-        bg-inherit
-        border-b-2
-        border-orange-400
-        hover:border-orange-50
-        placeholder:text-neutral-600
-        text-neutral-100
+        p-4
+        bg-base
+        rounded-md
+        border-2
+        hover:cursor-pointer
+        border-blue
+        placeholder:text-overlayA
+        text-text
         overflow-clip
         "
       classList={{
@@ -52,7 +53,7 @@ export const CharSort = (props: { class?: string }) => {
     >
       <For each={fns}>
         {(fn: { name: string; fn: (a: Char, b: Char) => number }) => (
-          <option value={fn.name} class="bg-neutral-900 text-neutral-200">
+          <option value={fn.name} class="bg-crust text-text">
             {fn.name}
           </option>
         )}
