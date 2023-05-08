@@ -23,7 +23,7 @@ const fns = [
 
 type SortFn = (typeof fns)[number];
 
-const [charSortValue, charSortSet] = createSignal<SortFn>();
+const [charSortValue, charSortSet] = createSignal<SortFn>(fns[0]);
 
 export const CharSortValue = charSortValue;
 
@@ -31,13 +31,13 @@ export const CharSort = ({ class: className }: { class?: string }) => {
   return (
     <DropDown
       class={className}
-      value={() => (charSortValue() ? charSortValue()!.name : "Sort")}
+      value={() => charSortValue().name}
       options={fns.map((f) => ({ value: f.value, label: f.name }))}
       onChange={(e: string) => {
         // find existing function.
         // if it's the same one, reverse the sort.
         // otherwise, set the new one.
-        const sorter = fns.find((f) => f.value === e);
+        const sorter = fns.find((f) => f.value === e)!;
         if (
           sorter &&
           charSortValue() &&

@@ -27,10 +27,11 @@ export default (props: {
   });
 
   return (
+    // let cards grow to fill the space but wrap so we still have multiple per row
     <div id="list" class="flex flex-row justify-center gap-6 flex-wrap">
       <For each={charV()} fallback={fallback}>
         {(char: Char) => (
-          <div class="w-full sm:w-72">
+          <div class="max-w-120 w-64 flex-grow">
             <CharCard char={char} colored={false} />
           </div>
         )}

@@ -32,7 +32,7 @@ export default () => {
             <FilterBar />
           </div>
         </div>
-        <div class="max-w-400 py-8 sm:p-8 mx-auto">
+        <div class="max-w-400 p-8 mx-auto">
           <CharGrid characters={user()?.waifus || []} />
         </div>
       </main>
