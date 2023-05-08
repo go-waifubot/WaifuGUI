@@ -12,30 +12,40 @@ const filterFn = (v: string) => (a: Char) => {
 const [charFilterValue, charFilterSet] = createSignal(filterFn(""));
 export const CharFilterValue = charFilterValue;
 
-export const CharFilter = (props: { class?: string }) => {
+export const CharFilter = ({ class: classList }: { class?: string }) => {
   return (
-    <input
-      type="text"
-      onInput={(e) => {
-        charFilterSet(() => filterFn(e.currentTarget.value));
+    <div
+      rounded-md
+      class="relative mr-6"
+      classList={{
+        [classList!]: !!classList,
       }}
-      id="char-filter"
-      placeholder="Filter characters"
-      class="
-        p-4
+    >
+      <input
+        type="text"
+        onInput={(e) => {
+          charFilterSet(() => filterFn(e.currentTarget.value));
+        }}
+        id="char-filter"
+        placeholder="Filter characters"
+        class="
+        py-4
+        px-2
+        rounded-md
         focus:outline-none
         bg-base
         placeholder:font-sans
-        rounded-md
         border-blue
         hover:cursor-text
         placeholder:text-overlayA
         text-text
         overflow-clip
         "
-      classList={{
-        [props.class!]: !!props.class,
-      }}
-    />
+        classList={{
+          [classList!]: !!classList,
+        }}
+      ></input>
+      <span class="i-ph-magnifying-glass self-center top-4.5 right-0 absolute"></span>
+    </div>
   );
 };
