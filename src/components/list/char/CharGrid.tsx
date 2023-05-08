@@ -17,9 +17,10 @@ export default (props: {
     const s = CharSortValue();
     const f = CharFilterValue();
     const cut = ShowAllValue();
+
     charS(
       props.characters
-        .sort(s)
+        .sort(s?.fn)
         .filter(f)
         .slice(0, cut ? 250 : props.characters.length)
     );

@@ -1,7 +1,6 @@
 import { useParams } from "@solidjs/router";
 import { createResource, Show } from "solid-js";
 import list from "./api/list";
-import NavBar from "./components/list/Nav";
 import ProfileBar from "./components/list/Profile";
 import FilterBar from "./components/list/FilterBar";
 import CharGrid from "./components/list/char/CharGrid";
