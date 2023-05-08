@@ -1,18 +1,29 @@
 const ROOT_URL = "https://waifuapi.karitham.dev";
 
+export type UserID = string;
+
 export interface User {
-  id: string;
+  id: UserID;
   favorite?: Char;
   quote?: string;
   anilist_url?: string;
   waifus: Char[];
 }
 export interface Char {
-  id: number;
+  id: string;
   image: string;
   name: string;
   date: string;
   type: string;
+}
+
+export interface CharOwned {
+  id: string;
+  image: string;
+  name: string;
+  date: string;
+  type: string;
+  owners?: UserID[];
 }
 
 export type AsyncTuple<

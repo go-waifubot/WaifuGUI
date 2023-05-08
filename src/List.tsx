@@ -22,7 +22,6 @@ export default () => {
       <main class="bg-base min-h-screen flex flex-col text-text">
         <div class="flex flex-col gap-8 w-full text-text rounded-b-12 bg-crust">
           <div class="flex flex-col gap-12 p-8 mx-auto max-w-7xl">
-            {/* <NavBar /> */}
             <ProfileBar
               favorite={user()?.favorite!}
               about={user()?.quote!}

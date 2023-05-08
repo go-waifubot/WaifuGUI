@@ -32,7 +32,7 @@ export default (props: {
   return (
     <>
       <Show when={props.favorite && props.favorite.name !== ""}>
-        <div class="flex flex-col md:flex-row gap-4 items-center">
+        <div class="flex flex-col md:flex-row gap-4 items-center md:items-start">
           <img
             src={props.favorite?.image}
             class="block w-auto h-auto object-cover max-w-64 rounded-3xl"
@@ -46,7 +46,7 @@ export default (props: {
               <div>
                 <div
                   id="about"
-                  class="hyphens-auto overflow-hidden break-words break-all whitespace-pre-wrap text-text font-sans"
+                  class="hyphens-auto overflow-hidden text-sm m-0 break-words break-all text-text font-sans"
                   innerHTML={marked.parse(
                     props.about?.replaceAll("\n", "\n\n") ?? ""
                   )}
