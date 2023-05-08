@@ -14,14 +14,23 @@ const [charFilterValue, charFilterSet] = createSignal(filterFn(""));
 export const CharFilterValue = charFilterValue;
 
 export const CharFilter = ({ class: classList }: { class?: string }) => {
+  const [getV, setV] = createSignal("");
   return (
     <Input
-      placeholder="Filter characters"
+      placeholder="Korone Inugami"
       class={classList}
       onInput={(v: string) => {
-        charFilterSet(() => filterFn(v));
+        setV(v);
+        charFilterSet(() => filterFn(getV()));
       }}
-      icon={<span class="i-ph-magnifying-glass"></span>}
+      icon={
+        <span
+          class="i-ph-magnifying-glass"
+          classList={{
+            "text-emerald": !!getV(),
+          }}
+        ></span>
+      }
     ></Input>
   );
 };

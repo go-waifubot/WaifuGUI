@@ -15,8 +15,7 @@ export const Input = ({
 }) => {
   return (
     <div
-      rounded-md
-      class="relative mr-6"
+      class="relative flex w-full"
       classList={{
         [classList!]: !!classList,
       }}
@@ -45,7 +44,7 @@ export const Input = ({
           [classList!]: !!classList,
         }}
       ></input>
-      {icon ? <span class="top-3.5 right-0 absolute">{icon}</span> : null}
+      {icon && <span class="top-3.5 right-3.5 absolute">{icon}</span>}
     </div>
   );
 };

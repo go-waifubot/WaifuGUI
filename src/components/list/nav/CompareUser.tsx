@@ -1,6 +1,7 @@
 import { createSignal } from "solid-js";
 import { Input } from "../../generic/Input";
 import getList, { User } from "../../../api/list";
+import Label from "../../generic/Label";
 
 const [userAgainst, userAgaisntSet] = createSignal<User>();
 export const UserAgainst = userAgainst;
@@ -17,11 +18,25 @@ const getUserAgainst = async (username: string) => {
 
 export default ({ class: classList }: { class?: string }) => {
   return (
-    <Input
-      placeholder="Compare against user"
-      class={classList}
-      onEnter={getUserAgainst}
-      icon={<span class="i-ph-apple-podcasts-logo"></span>}
-    ></Input>
+    <Label text="Compare against user">
+      <Input
+        placeholder="641977906230198282"
+        class={classList}
+        onEnter={getUserAgainst}
+        icon={
+          <span
+            class="i-ph-apple-podcasts-logo"
+            title={
+              !!userAgainst()
+                ? "Comparing against user"
+                : "Look for a user to compare against"
+            }
+            classList={{
+              "text-emerald": !!userAgainst(),
+            }}
+          ></span>
+        }
+      ></Input>
+    </Label>
   );
 };

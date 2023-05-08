@@ -17,7 +17,7 @@ const fns = [
   {
     name: "ID",
     value: "id",
-    fn: (a: Char, b: Char) => a.id - b.id,
+    fn: (a: Char, b: Char) => Number(a.id) - Number(b.id),
   },
 ];
 

@@ -47,7 +47,7 @@ export default ({
     <div id="list" class="flex flex-row justify-center gap-6 flex-wrap">
       <For each={charV()} fallback={fallback}>
         {(char: CharOwned) => (
-          <div class="max-w-120 w-64 flex-grow">
+          <div class="max-w-120 w-72 flex-grow">
             <CharCard char={char} multiOwned={!!char.owners} />
           </div>
         )}

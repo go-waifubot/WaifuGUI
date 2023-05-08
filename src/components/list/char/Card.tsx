@@ -11,7 +11,10 @@ export default (props: { char: Char; multiOwned?: boolean }) => {
       />
       {/* if char is multi-owned, add icon on top of image */}
       {props.multiOwned && (
-        <span class="i-ph-apple-podcasts-logo text-emerald w-6 h-6 absolute bottom-2 right-2"></span>
+        <span
+          class="i-ph-apple-podcasts-logo text-emerald w-6 h-6 absolute bottom-2 right-2"
+          title="This character is owned by someone else too!"
+        ></span>
       )}
       <CardRight char={props.char} class="p-4" />
     </div>
