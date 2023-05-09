@@ -3,7 +3,7 @@ import { Input } from "../../generic/Input";
 import getList, { User } from "../../../api/list";
 import Label from "../../generic/Label";
 
-const [userAgainst, userAgaisntSet] = createSignal<User>();
+const [userAgainst, setUserAgainst] = createSignal<User>();
 export const UserAgainst = userAgainst;
 
 const getUserAgainst = async (username: string) => {
@@ -13,7 +13,7 @@ const getUserAgainst = async (username: string) => {
     return;
   }
 
-  userAgaisntSet(list);
+  setUserAgainst(list);
 };
 
 export default ({ class: classList }: { class?: string }) => {
@@ -31,6 +31,9 @@ export default ({ class: classList }: { class?: string }) => {
                 ? "Comparing against user"
                 : "Look for a user to compare against"
             }
+            onClick={() => {
+              setUserAgainst(undefined);
+            }}
             classList={{
               "text-emerald": !!userAgainst(),
             }}
