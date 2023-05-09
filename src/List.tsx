@@ -18,23 +18,25 @@ export default () => {
   });
 
   return (
-    <Show when={!user.loading}>
-      <main class="bg-base min-h-screen flex flex-col text-text">
-        <div class="flex flex-col gap-8 w-full text-text rounded-b-12 bg-crust">
-          <div class="flex flex-col gap-12 p-8 mx-auto max-w-7xl">
+    <main class="bg-base min-h-screen flex flex-col text-text">
+      <div class="flex flex-col gap-8 w-full text-text rounded-b-12 bg-crust">
+        <div class="flex flex-col gap-12 p-8 mx-auto max-w-7xl">
+          <Show when={!user.loading} fallback={<div></div>}>
             <ProfileBar
               favorite={user()?.favorite!}
               about={user()?.quote!}
               user={user()?.id}
               anilist_url={user()?.anilist_url}
             />
-            <FilterBar />
-          </div>
+          </Show>
+          <FilterBar />
         </div>
-        <div class="max-w-400 p-8 mx-auto">
+      </div>
+      <div class="max-w-400 p-8 mx-auto">
+        <Show when={!user.loading} fallback={<div></div>}>
           <CharGrid characters={user()?.waifus || []} />
-        </div>
-      </main>
-    </Show>
+        </Show>
+      </div>
+    </main>
   );
 };

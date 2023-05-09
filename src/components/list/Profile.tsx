@@ -10,24 +10,28 @@ export default (props: {
   anilist_url: string | undefined;
   about: string | undefined;
 }) => {
-  const Favorite = !!props.favorite ? (
-    <CardRight char={props.favorite} />
-  ) : null;
-
   const username =
     props.anilist_url?.split(/https:\/\/anilist.co\/user\/([\w\d]+)/g)?.[1] ??
     props.user;
 
-  const Username = !!props.anilist_url ? (
-    <a
-      class="text-text font-sans hover:underline-offset-2 w-min hover:underline"
-      target="_blank"
-      rel="noopener noreferrer"
-      href={props.anilist_url}
-    >
-      <h2 class="text-4xl">{username}</h2>
-    </a>
-  ) : null;
+  const Favorite = (
+    <Show when={props.favorite && props.favorite.name !== ""}>
+      <CardRight char={props.favorite!} />
+    </Show>
+  );
+
+  const Username = (
+    <Show when={props.anilist_url}>
+      <a
+        class="text-text font-sans hover:underline-offset-2 w-min hover:underline"
+        target="_blank"
+        rel="noopener noreferrer"
+        href={props.anilist_url}
+      >
+        <h2 class="text-4xl">{username}</h2>
+      </a>
+    </Show>
+  );
 
   return (
     <>

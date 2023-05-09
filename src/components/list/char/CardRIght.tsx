@@ -1,3 +1,4 @@
+import { Show } from "solid-js";
 import { Char } from "../../../api/list";
 
 export default function CardRight(props: { char: Char; class?: string }) {
@@ -19,25 +20,25 @@ export default function CardRight(props: { char: Char; class?: string }) {
       </a>
       <button
         class="text-subtextA items-center m-0 p-0 bg-transparent text-sm hover:bg-transparent border-none inline-flex gap-2 hover:underline"
-        onclick={() => navigator.clipboard.writeText(props.char.id.toString())}
+        onClick={() => navigator.clipboard.writeText(props.char.id.toString())}
       >
         <span class="i-ph-copy" />
         {props.char.id}
       </button>
-      {props.char.date && (
+      <Show when={props.char.date}>
         <p class="m-0 inline-flex gap-2 items-center">
           <span class="i-ph-calendar-blank" />
-          {new Date(props.char.date).toLocaleDateString(["fr-FR"])}
+          {new Date(props.char.date!).toLocaleDateString(["fr-FR"])}
         </p>
-      )}
-      {props.char.type && (
+      </Show>
+      <Show when={props.char.date}>
         <p class="m-0 inline-flex gap-2 items-center">
           <span class="i-ph-certificate" />
           {props.char.type === "OLD"
             ? "unknown"
-            : props.char.type?.toLowerCase()}
+            : props.char.type!.toLowerCase()}
         </p>
-      )}
+      </Show>
     </div>
   );
 }
