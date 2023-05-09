@@ -18,18 +18,25 @@ export default (props: {
     o.map((option) => {
       return (
         <button
-          class="bg-transparent flex flex-row items-center px-4 py-2 gap-4 text-left w-full z-12 hover:bg-overlayA border-none text-text focus:outline-none"
+          class="bg-transparent flex flex-row items-center justify-between px-4 py-2 gap-4 text-left w-full z-12 hover:bg-overlayA border-none text-text focus:outline-none"
           onClick={() => {
             props.onChange(option.value);
             setOpen(false);
           }}
         >
+          {option.label}
           {option.image ? (
-            <img src={option.image} class="h-12 w-auto object-cover"></img>
+            // make image always the same size
+            <img
+              src={option.image}
+              class="
+              h-16
+              object-cover
+              "
+            ></img>
           ) : (
             <div></div>
           )}
-          {option.label}
         </button>
       );
     });
