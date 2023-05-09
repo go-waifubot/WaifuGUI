@@ -1,20 +1,22 @@
 import CompareUser from "./nav/CompareUser";
 import { CharFilter } from "./nav/Filter";
+import FilterMedia from "./nav/FilterMedia";
 import ShowAllButton from "./nav/ShowAllButton";
 import { CharSort } from "./nav/Sort";
 
 export default () => {
   return (
     <div class="flex flex-col md:gap-4 gap-8">
-      <div class="flex rounded-xl flex-row flex-wrap md:flex-nowrap gap-8 justify-between">
+      <div class="flex rounded-xl flex-row flex-wrap md:flex-nowrap gap-4 justify-between">
         <CharFilter class="w-full h-full" />
-        <div class="w-full md:w-96 flex flex-row gap-8">
+        <div class="w-full md:w-96 flex flex-row gap-4">
           <CharSort class="w-full" />
           <ShowAllButton class="w-36" />
         </div>
       </div>
-      <div class="flex rounded-xl flex-row flex-wrap md:flex-nowrap gap-8 justify-between">
+      <div class="flex rounded-xl flex-row flex-wrap md:flex-nowrap gap-4 justify-between">
         <CompareUser class="w-full" />
+        <FilterMedia />
       </div>
     </div>
   );

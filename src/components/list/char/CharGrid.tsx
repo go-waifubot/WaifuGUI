@@ -6,6 +6,7 @@ import { ShowAllValue } from "../nav/ShowAllButton";
 import { CharSortValue } from "../nav/Sort";
 import { createSignal } from "solid-js";
 import { UserAgainst } from "../nav/CompareUser";
+import { FilterCharacter } from "../nav/FilterMedia";
 
 export default ({
   characters,
@@ -21,12 +22,13 @@ export default ({
     const f = CharFilterValue();
     const cut = ShowAllValue();
     const other = UserAgainst();
-
+    const f2 = FilterCharacter();
     const otherChars = (other?.waifus || []).map((char) => char.id);
 
     charS(
       (characters as any)
         .sort(s?.fn)
+        .filter(f2)
         .filter(f)
         .slice(0, cut ? 100 : characters.length)
         .map((char: CharOwned) => {
