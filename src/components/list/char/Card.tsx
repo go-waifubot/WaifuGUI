@@ -9,7 +9,6 @@ export default (props: {
   return (
     <div
       class={`bg-surfaceA rounded-lg relative flex h-44 w-full overflow-clip`}
-      title="you do not own this character"
     >
       <img
         src={props.char.image}
@@ -17,6 +16,7 @@ export default (props: {
         style={{
           filter: props.missing ? "grayscale(100%)" : "none",
         }}
+        title={props.missing ? "You don't own this character yet!" : undefined}
         alt={`image of the character ${props.char.name}`}
       />
       {/* if char is multi-owned, add icon on top of image */}
