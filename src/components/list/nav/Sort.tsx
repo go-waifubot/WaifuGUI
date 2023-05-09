@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js";
 import { Char } from "../../../api/list";
-import DropDown from "../../generic/DropDown";
+import { DropDownOption, DropDownSelect } from "../../generic/DropDown";
 
 const fns = [
   {
@@ -29,17 +29,16 @@ const [charSortValue, charSortSet] = createSignal<SortFn>(fns[0]);
 
 export const CharSortValue = charSortValue;
 
-export const CharSort = ({ class: className }: { class?: string }) => {
+export const CharSort = () => {
   return (
-    <DropDown
-      class={className}
+    <DropDownSelect
       value={() => charSortValue().name}
-      options={fns.map((f) => ({ value: f.value, label: f.name }))}
-      onChange={(e: string) => {
+      options={fns}
+      onChange={(e: (typeof fns)[number]) => {
         // find existing function.
         // if it's the same one, reverse the sort.
         // otherwise, set the new one.
-        const sorter = fns.find((f) => f.value === e)!;
+        const sorter = fns.find((f) => f.value === e.value)!;
         if (
           sorter &&
           charSortValue() &&
@@ -56,6 +55,8 @@ export const CharSort = ({ class: className }: { class?: string }) => {
 
         charSortSet(() => sorter);
       }}
-    />
+    >
+      {(option) => <DropDownOption label={option.name} />}
+    </DropDownSelect>
   );
 };

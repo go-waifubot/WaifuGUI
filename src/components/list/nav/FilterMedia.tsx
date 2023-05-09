@@ -2,7 +2,7 @@ import { createEffect, createResource, createSignal } from "solid-js";
 import type { Media, SearchMediaResponse } from "../../../api/anilist";
 import Label from "../../generic/Label";
 import { getMediaCharacters, searchMedia } from "../../../api/anilist";
-import InputDropDown, { Option } from "../../generic/InputDropDown";
+import { InputDropDown, DropDownOptionWithImage } from "../../generic/DropDown";
 import { Char } from "../../../api/list";
 
 let timer: number;
@@ -37,6 +37,8 @@ const [filterV, setFilter] = createSignal<(c: Char) => boolean>(() => true);
 
 export const FilterCharacter = filterV;
 export const MediaCharacters = mediaCharacters;
+
+type Option = { value: string; label: string; image?: string };
 
 export default () => {
   const [getV, setV] = createSignal("");
@@ -76,12 +78,33 @@ export default () => {
     });
   });
 
+  const icon = () => (
+    <span
+      class="i-ph-television text-lg"
+      onClick={() => {
+        setSelected(undefined);
+        setV("");
+        setFilter(() => () => true);
+        mutateChars(undefined);
+      }}
+      classList={{
+        "text-emerald": !!selected(),
+      }}
+    ></span>
+  );
+
+  const onChange = (v: Option): void => {
+    const m = media()?.data.Page.media.find((m) => m.id == v.value);
+    setV((p) => m?.title.romaji || p);
+    setSelected(m!);
+  };
+
   return (
     <Label text="Filter by media">
       <InputDropDown
         onInput={(e: string) => {
           setV(e);
-          debounce(() => refetchMedia(), 500);
+          debounce(() => refetchMedia(), 200);
         }}
         onEnter={(e: string) => {
           setV(e);
@@ -89,27 +112,14 @@ export default () => {
         }}
         placeholder="Made in Abyss"
         value={getV}
-        options={options}
-        onChange={(v: string) => {
-          const m = media()?.data.Page.media.find((m) => m.id == v);
-          setV((p) => m?.title.romaji || p);
-          setSelected(m!);
-        }}
-        icon={
-          <span
-            class="i-ph-television text-lg"
-            onClick={() => {
-              setSelected(undefined);
-              setV("");
-              setFilter(() => () => true);
-              mutateChars(undefined);
-            }}
-            classList={{
-              "text-emerald": !!selected(),
-            }}
-          ></span>
-        }
-      ></InputDropDown>
+        options={options()}
+        onChange={onChange}
+        icon={icon}
+      >
+        {(option: Option) => (
+          <DropDownOptionWithImage label={option.label} image={option.image} />
+        )}
+      </InputDropDown>
     </Label>
   );
 };
