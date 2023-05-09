@@ -13,16 +13,16 @@ export interface Char {
   id: string;
   image: string;
   name: string;
-  date: string;
-  type: string;
+  date?: string;
+  type?: string;
 }
 
 export interface CharOwned {
   id: string;
   image: string;
   name: string;
-  date: string;
-  type: string;
+  date?: string;
+  type?: string;
   owners?: UserID[];
 }
 

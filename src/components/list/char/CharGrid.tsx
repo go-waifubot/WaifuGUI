@@ -6,7 +6,7 @@ import { ShowAllValue } from "../nav/ShowAllButton";
 import { CharSortValue } from "../nav/Sort";
 import { createSignal } from "solid-js";
 import { UserAgainst } from "../nav/CompareUser";
-import { FilterCharacter } from "../nav/FilterMedia";
+import { FilterCharacter, MediaCharacters } from "../nav/FilterMedia";
 
 export default ({
   characters,
@@ -17,12 +17,13 @@ export default ({
   characters: Char[];
 }) => {
   const [charV, charS] = createSignal<CharOwned[]>(characters as CharOwned[]);
+  const [charM, charMSet] = createSignal<CharOwned[] | undefined>();
   createEffect(() => {
     const s = CharSortValue();
     const f = CharFilterValue();
     const cut = ShowAllValue();
-    const other = UserAgainst();
     const f2 = FilterCharacter();
+    const other = UserAgainst();
     const otherChars = (other?.waifus || []).map((char) => char.id);
 
     charS(
@@ -44,13 +45,46 @@ export default ({
     );
   });
 
+  createEffect(() => {
+    const other = UserAgainst();
+    const otherChars = (other?.waifus || []).map((char) => char.id);
+
+    charMSet(() => {
+      const m = MediaCharacters()
+        ?.filter((char) => FilterCharacter()(char))
+        .filter((char) => {
+          return !charV().find((c) => c.id === char.id);
+        });
+
+      if (!m) return;
+
+      return m.map((char) => {
+        if (otherChars) {
+          return {
+            ...char,
+            owners: otherChars.includes(char.id) ? [other!.id] : undefined,
+          } as CharOwned;
+        } else {
+          return char as CharOwned;
+        }
+      });
+    });
+  });
+
   return (
     // let cards grow to fill the space but wrap so we still have multiple per row
     <div id="list" class="flex flex-row justify-center gap-6 flex-wrap">
-      <For each={charV()} fallback={fallback}>
+      <For each={charV()} fallback={<></>}>
         {(char: CharOwned) => (
           <div class="max-w-120 w-72 flex-grow">
             <CharCard char={char} multiOwned={!!char.owners} />
+          </div>
+        )}
+      </For>
+      <For each={charM()} fallback={<></>}>
+        {(char: CharOwned) => (
+          <div class="max-w-120 w-72 flex-grow">
+            <CharCard char={char} multiOwned={!!char.owners} missing={true} />
           </div>
         )}
       </For>

@@ -7,7 +7,9 @@ const fns = [
     name: "Date",
     value: "date",
     fn: (a: Char, b: Char) =>
-      new Date(b.date).getTime() - new Date(a.date).getTime(),
+      b.date && a.date
+        ? new Date(b.date).getTime() - new Date(a.date).getTime()
+        : -1,
   },
   {
     name: "Name",

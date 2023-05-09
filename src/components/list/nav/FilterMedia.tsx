@@ -35,6 +35,7 @@ const [mediaCharacters, { refetch: refetchMediaCharacters }] = createResource<
 const [filterV, setFilter] = createSignal<(c: Char) => boolean>(() => true);
 
 export const FilterCharacter = filterV;
+export const MediaCharacters = mediaCharacters;
 
 export default () => {
   const [getV, setV] = createSignal("");

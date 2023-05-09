@@ -24,14 +24,20 @@ export default function CardRight(props: { char: Char; class?: string }) {
         <span class="i-ph-copy" />
         {props.char.id}
       </button>
-      <p class="m-0 inline-flex gap-2 items-center">
-        <span class="i-ph-calendar-blank" />
-        {new Date(props.char.date).toLocaleDateString(["fr-FR"])}
-      </p>
-      <p class="m-0 inline-flex gap-2 items-center">
-        <span class="i-ph-certificate" />
-        {props.char.type === "OLD" ? "unknown" : props.char.type.toLowerCase()}
-      </p>
+      {props.char.date && (
+        <p class="m-0 inline-flex gap-2 items-center">
+          <span class="i-ph-calendar-blank" />
+          {new Date(props.char.date).toLocaleDateString(["fr-FR"])}
+        </p>
+      )}
+      {props.char.type && (
+        <p class="m-0 inline-flex gap-2 items-center">
+          <span class="i-ph-certificate" />
+          {props.char.type === "OLD"
+            ? "unknown"
+            : props.char.type?.toLowerCase()}
+        </p>
+      )}
     </div>
   );
 }
