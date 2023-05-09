@@ -27,10 +27,10 @@ export default ({
     const otherChars = (other?.waifus || []).map((char) => char.id);
 
     charS(
-      (characters as any)
-        .sort(s?.fn)
+      characters
         .filter(f2)
         .filter(f)
+        .sort(s?.fn)
         .slice(0, cut ? 100 : characters.length)
         .map((char: CharOwned) => {
           if (otherChars.includes(char.id)) {
@@ -43,19 +43,13 @@ export default ({
           return char;
         })
     );
-  });
-
-  createEffect(() => {
-    const other = UserAgainst();
-    const otherChars = (other?.waifus || []).map((char) => char.id);
 
     charMSet(() => {
       const m = MediaCharacters()
         ?.filter((char) => FilterCharacter()(char))
-        .filter((char) => {
-          return !charV().find((c) => c.id === char.id);
-        });
-
+        .filter((char) => !charV().find((c) => c.id === char.id))
+        .filter(f)
+        .sort(s?.fn);
       if (!m) return;
 
       return m.map((char) => {
