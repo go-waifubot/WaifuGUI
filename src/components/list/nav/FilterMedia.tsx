@@ -35,7 +35,6 @@ const [mediaCharacters, { refetch: refetchMediaCharacters }] = createResource<
 const [filterV, setFilter] = createSignal<(c: Char) => boolean>(() => true);
 
 export const FilterCharacter = filterV;
-export const MediaCharacters = mediaCharacters;
 
 export default () => {
   const [getV, setV] = createSignal("");
@@ -97,8 +96,13 @@ export default () => {
         icon={
           <span
             class="i-ph-television text-lg"
+            onClick={() => {
+              setSelected(undefined);
+              setV("");
+              setFilter(() => () => true);
+            }}
             classList={{
-              "text-emerald": !!getV(),
+              "text-emerald": !!selected(),
             }}
           ></span>
         }
