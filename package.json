@@ -2,8 +2,10 @@
   "name": "vite-template-solid",
   "version": "0.0.0",
   "description": "",
-  "homepage": "https://beta.waifubot.karitham.dev",
+  "homepage": "https://waifugui.karitham.dev",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
@@ -18,6 +20,7 @@
     "@unocss/preset-web-fonts": "^0.51.12",
     "@unocss/preset-wind": "^0.51.12",
     "@unocss/vite": "^0.49.4",
+    "gh-pages": "^5.0.0",
     "typescript": "^4.9.5",
     "unocss": "^0.51.12",
     "vite": "^4.1.1",
