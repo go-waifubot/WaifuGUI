@@ -98,7 +98,7 @@ export type SearchMediaResponse = {
 export async function searchMedia(anime: string, count: number) {
   const query = `query ($search: String) {
         Page (perPage: ${count}) {
-            media (search: $search, type: ANIME) {
+            media (search: $search) {
                 id
                 title {
                     romaji
