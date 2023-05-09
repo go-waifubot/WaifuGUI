@@ -13,9 +13,10 @@ function debounce(func: () => any, timeout: number) {
 
 const [selected, setSelected] = createSignal<Media>();
 
-const [mediaCharacters, { refetch: refetchMediaCharacters }] = createResource<
-  Char[] | undefined
->(async () => {
+const [
+  mediaCharacters,
+  { refetch: refetchMediaCharacters, mutate: mutateChars },
+] = createResource<Char[] | undefined>(async () => {
   if (!selected()) return undefined;
   const m = await getMediaCharacters(selected()?.id!);
   if (!m) {
@@ -101,6 +102,7 @@ export default () => {
               setSelected(undefined);
               setV("");
               setFilter(() => () => true);
+              mutateChars(undefined);
             }}
             classList={{
               "text-emerald": !!selected(),

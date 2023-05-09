@@ -46,7 +46,7 @@ export default (props: {
               <div>
                 <div
                   id="about"
-                  class="hyphens-auto overflow-hidden text-sm m-0 break-words break-all text-text font-sans"
+                  class="hyphens-auto overflow-hidden text-sm m-0 md:break-words break-all text-text font-sans"
                   innerHTML={marked.parse(
                     props.about?.replaceAll("\n", "\n\n") ?? ""
                   )}

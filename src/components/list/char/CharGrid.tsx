@@ -82,6 +82,7 @@ export default ({
           </div>
         )}
       </For>
+      {charV().length == 0 ? fallback : null}
     </div>
   );
 };
