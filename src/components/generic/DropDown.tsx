@@ -13,7 +13,10 @@ function DropDown<T extends readonly any[]>(props: {
   return (
     <>
       <Show when={open()}>
-        <div class="absolute top-0 left-0 w-full h-full"></div>
+        <div
+          class="absolute top-0 left-0 w-full h-full"
+          onClick={() => setOpen(false)}
+        ></div>
       </Show>
       <div class="w-full relative">
         <button class="w-full p-0 flex flex-row justify-between font-sans border-none hover:cursor-pointer bg-transparent text-text focus:outline-none">
@@ -25,7 +28,9 @@ function DropDown<T extends readonly any[]>(props: {
           </Show>
         </button>
         <Show when={open()}>
-          <DropDownOpenWrapper setOpen={setOpen} {...props} />
+          <div class="flex w-[calc(100%-4px)] items-start border-solid flex-col z-10 p-0 border-t-0 border-2 border-blue rounded-b-2 bg-base absolute right-0">
+            <FormatOptions {...props} setOpen={setOpen} />
+          </div>
         </Show>
       </div>
     </>
@@ -52,19 +57,6 @@ function FormatOptions<T extends readonly { value: string }[]>(props: {
         </button>
       )}
     </For>
-  );
-}
-
-function DropDownOpenWrapper<T extends readonly any[]>(props: {
-  onChange: (e: T[number]) => void;
-  options: T[number];
-  setOpen: Setter<boolean>;
-  children: (item: T[number], index: Accessor<number>) => JSX.Element;
-}) {
-  return (
-    <div class="flex w-[calc(100%-4px)] items-start border-solid flex-col z-10 p-0 border-t-0 border-2 border-blue rounded-b-2 bg-base absolute right-0">
-      <FormatOptions {...props} />
-    </div>
   );
 }
 
