@@ -14,11 +14,13 @@ export default (props: {
       <img
         src={props.char.image}
         class="object-cover w-32"
+        width={128}
+        height={176}
         style={{
           filter: props.missing ? "grayscale(100%)" : "none",
         }}
         title={props.missing ? "You don't own this character yet!" : undefined}
-        alt={`image of the character ${props.char.name}`}
+        alt={`image of ${props.char.name}`}
       />
       <Show when={props.multiOwned}>
         <span
