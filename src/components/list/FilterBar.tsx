@@ -10,12 +10,12 @@ export default () => {
       <div class="flex rounded-xl flex-row flex-wrap md:flex-nowrap gap-4 justify-between">
         <CharFilter class="w-full h-full" />
         <div class="w-full md:w-96 flex flex-row gap-4">
-          <CharSort class="w-full" />
+          <CharSort />
           <ShowAllButton class="w-42" />
         </div>
       </div>
       <div class="flex rounded-xl flex-row flex-wrap md:flex-nowrap gap-4 justify-between">
-        <CompareUser class="w-full" />
+        <CompareUser />
         <FilterMedia />
       </div>
     </div>

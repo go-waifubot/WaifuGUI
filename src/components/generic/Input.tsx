@@ -1,25 +1,18 @@
 import { JSX } from "solid-js";
 
 export const Input = ({
-  class: classList,
   placeholder,
   onInput,
   onEnter,
   icon,
 }: {
-  class?: string;
   onInput?: (a: string) => void;
   onEnter?: (a: string) => void;
   placeholder?: string;
   icon?: JSX.Element;
 }) => {
   return (
-    <div
-      class="relative flex w-full"
-      classList={{
-        [classList!]: !!classList,
-      }}
-    >
+    <div class="relative flex w-full">
       <input
         type="text"
         onInput={(e) => onInput && onInput(e.currentTarget.value)}
@@ -28,6 +21,7 @@ export const Input = ({
         }
         placeholder={placeholder}
         class="
+          w-full
           py-4
           px-2
           rounded-md
@@ -40,9 +34,6 @@ export const Input = ({
           text-text
           overflow-clip
           "
-        classList={{
-          [classList!]: !!classList,
-        }}
       ></input>
       {icon && <span class="top-3.5 right-3.5 absolute">{icon}</span>}
     </div>

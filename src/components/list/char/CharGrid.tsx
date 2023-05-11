@@ -16,9 +16,7 @@ export default ({
   cut?: number;
   characters: Char[];
 }) => {
-  const [charV, charS] = createSignal<CharOwned[]>(characters as CharOwned[]);
-  const [charM, charMSet] = createSignal<CharOwned[] | undefined>();
-  createEffect(() => {
+  const f = () => {
     const s = CharSortValue();
     const f = CharFilterValue();
     const cut = ShowAllValue();
@@ -47,7 +45,7 @@ export default ({
     charMSet(() => {
       const m = MediaCharacters()
         ?.filter((char) => FilterCharacter()(char))
-        .filter((char) => !charV().find((c) => c.id === char.id))
+        .filter((char) => !charV()?.find((c) => c.id === char.id))
         .filter(f)
         .sort(s?.fn);
       if (!m) return;
@@ -63,7 +61,11 @@ export default ({
         }
       });
     });
-  });
+  };
+
+  const [charV, charS] = createSignal<CharOwned[]>();
+  const [charM, charMSet] = createSignal<CharOwned[] | undefined>();
+  createEffect(f);
 
   return (
     // let cards grow to fill the space but wrap so we still have multiple per row
@@ -82,7 +84,7 @@ export default ({
           </div>
         )}
       </For>
-      {charV().length == 0 ? fallback : null}
+      {charV()?.length == 0 ? fallback : null}
     </div>
   );
 };

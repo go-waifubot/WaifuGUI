@@ -16,12 +16,11 @@ const getUserAgainst = async (username: string) => {
   setUserAgainst(list);
 };
 
-export default ({ class: classList }: { class?: string }) => {
+export default () => {
   return (
     <Label text="Compare against user">
       <Input
         placeholder="641977906230198282"
-        class={classList}
         onEnter={getUserAgainst}
         icon={
           <span
