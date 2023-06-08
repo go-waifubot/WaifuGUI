@@ -16,6 +16,7 @@ export default (props: {
         class="object-cover w-32"
         width={128}
         height={176}
+        loading="lazy"
         style={{
           filter: props.missing ? "grayscale(100%)" : "none",
         }}
