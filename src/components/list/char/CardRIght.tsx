@@ -11,7 +11,7 @@ export default function CardRight(props: { char: Char; class?: string }) {
       }}
     >
       <a
-        class="capitalize m-0 items-center text-text hover:underline-offset-2 hover:underline text-lg"
+        class="capitalize m-0 decoration-none items-center text-text text-lg"
         target="_blank"
         rel="noopener noreferrer"
         href={`https://anilist.co/character/${props.char.id}`}
@@ -19,8 +19,9 @@ export default function CardRight(props: { char: Char; class?: string }) {
         {props.char.name}
       </a>
       <button
-        class="text-subtextA items-center m-0 p-0 bg-transparent text-sm hover:bg-transparent border-none inline-flex gap-2 hover:underline"
+        class="text-subtextA items-center m-0 p-0 bg-transparent text-sm hover:bg-transparent border-none inline-flex gap-2"
         onClick={() => navigator.clipboard.writeText(props.char.id.toString())}
+        title="Copy ID"
       >
         <span class="i-ph-copy" />
         {props.char.id}

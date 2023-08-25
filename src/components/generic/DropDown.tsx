@@ -28,7 +28,7 @@ function DropDown<T extends readonly any[]>(props: {
           </Show>
         </button>
         <Show when={open()}>
-          <div class="flex w-[calc(100%-4px)] items-start border-solid flex-col z-10 p-0 border-t-0 border-2 border-blue rounded-b-2 bg-base absolute right-0">
+          <div class="flex w-full border-none rounded-b-2 items-start flex-col z-10 p-0 bg-surfaceA absolute">
             <FormatOptions {...props} setOpen={setOpen} />
           </div>
         </Show>
@@ -47,7 +47,7 @@ function FormatOptions<T extends readonly { value: string }[]>(props: {
     <For each={props.options}>
       {(option, index) => (
         <button
-          class="bg-transparent text-left w-full z-12 border-none text-text focus:outline-none"
+          class="bg-transparent text-left p-0 w-full z-12 border-none text-text focus:outline-none"
           onClick={() => {
             props.onChange(option);
             props.setOpen(false);
@@ -62,7 +62,7 @@ function FormatOptions<T extends readonly { value: string }[]>(props: {
 
 export function DropDownOption(props: { label: string }) {
   return (
-    <div class="flex flex-row items-center justify-between p-4 gap-4 hover:bg-overlayA">
+    <div class="flex flex-row items-center justify-between p-4 gap-4 hover:bg-surfaceC">
       <span>{props.label}</span>
     </div>
   );
@@ -73,7 +73,7 @@ export function DropDownOptionWithImage(props: {
   image?: string;
 }) {
   return (
-    <div class="flex flex-row items-center justify-between px-4 py-2 gap-4 hover:bg-overlayA">
+    <div class="flex flex-row items-center justify-between px-4 py-2 gap-4 hover:bg-surfaceC">
       <span>{props.label}</span>
       <Show when={props.image} fallback={<div></div>}>
         <img src={props.image} class="h-16 object-cover"></img>
@@ -83,7 +83,7 @@ export function DropDownOptionWithImage(props: {
 }
 
 const borderStuff =
-  "w-full p-4 rounded-t-2 text-left focus:outline-none text-text bg-base placeholder:font-sans border-blue placeholder:text-overlayC text-text overflow-clip";
+  "border-none w-full p-4 rounded-2 text-left focus:outline-none text-text bg-surfaceA placeholder:font-sans placeholder:text-overlayC text-text overflow-clip";
 
 export function InputDropDown<T extends readonly any[]>(props: {
   options: T;
@@ -110,8 +110,6 @@ export function InputDropDown<T extends readonly any[]>(props: {
       class={borderStuff}
       classList={{
         "hover:cursor-text": true,
-        "rounded-b-2": !isOpen(),
-        "border-b-0": isOpen(),
       }}
     ></input>
   );
@@ -131,10 +129,9 @@ export const DropDownSelect = <T extends readonly any[]>(props: {
       closed={(isOpen: Accessor<boolean>, setOpen: Setter<boolean>) => (
         <button
           class={borderStuff}
-          onClick={() => setOpen(true)}
+          onClick={() => setOpen(!isOpen())}
           classList={{
-            "rounded-b-2": !isOpen(),
-            "border-b-0": isOpen(),
+            "rounded-b-none": isOpen(),
             "hover:cursor-pointer": true,
           }}
         >

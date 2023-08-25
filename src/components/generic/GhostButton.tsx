@@ -10,7 +10,7 @@ export default (props: {
     <button
       type={props.type ?? "button"}
       onClick={props.onClick}
-      class="rounded-md font-sans border-blue hover:cursor-pointer bg-base text-text p-4 focus:outline-none"
+      class="rounded-md font-sans border-none hover:cursor-pointer bg-surfaceA text-text p-4 focus:outline-none"
       classList={{
         [props.class!]: !!props.class,
       }}

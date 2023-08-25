@@ -22,7 +22,7 @@ export default () => {
     <div class="flex flex-col gap-2">
       <label class="text-sm">Discord ID</label>
       <input
-        class="rounded-md font-sans max-w-full border-blue bg-base hover:border-indigo text-text p-4 focus:outline-none"
+        class="rounded-md border-none font-sans max-w-full bg-base text-text p-4 focus:outline-none"
         type="text"
         name="user-input"
         alt="user-input"

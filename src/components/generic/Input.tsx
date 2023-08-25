@@ -22,13 +22,12 @@ export const Input = ({
         placeholder={placeholder}
         class="
           w-full
-          py-4
-          px-2
+          p-4
           rounded-md
           focus:outline-none
-          bg-base
+          bg-surfaceA
           placeholder:font-sans
-          border-blue
+          border-none
           hover:cursor-text
           placeholder:text-overlayC
           text-text
