@@ -1,10 +1,9 @@
-import { For, createEffect } from "solid-js";
+import { For, createMemo } from "solid-js";
 import { Char, CharOwned } from "../../../api/list";
 import CharCard from "../char/Card";
 import { CharFilterValue } from "../nav/Filter";
 import { ShowAllValue } from "../nav/ShowAllButton";
 import { CharSortValue } from "../nav/Sort";
-import { createSignal } from "solid-js";
 import { UserAgainst } from "../nav/CompareUser";
 import { FilterCharacter, MediaCharacters } from "../nav/FilterMedia";
 
@@ -16,75 +15,62 @@ export default ({
   cut?: number;
   characters: Char[];
 }) => {
-  const f = () => {
+  const f = (): CharOwned[] => {
     const s = CharSortValue();
     const f = CharFilterValue();
     const cut = ShowAllValue();
     const f2 = FilterCharacter();
     const other = UserAgainst();
-    const otherChars = (other?.waifus || []).map((char) => char.id);
-
-    charS(
-      characters
-        .filter(f2)
-        .filter(f)
-        .sort(s?.fn)
-        .slice(0, cut ? 100 : characters.length)
-        .map((char: CharOwned) => {
-          if (otherChars.includes(char.id)) {
-            return {
-              ...char,
-              owners: [other!.id],
-            };
-          }
-
-          return char;
-        })
+    const otherChars: Set<string> = new Set(
+      (other?.waifus || []).map((char) => char.id) as []
     );
 
-    charMSet(() => {
-      const m = MediaCharacters()
-        ?.filter((char) => FilterCharacter()(char))
-        .filter((char) => !charV()?.find((c) => c.id === char.id))
-        .filter(f)
-        .sort(s?.fn);
-      if (!m) return;
+    const owned = characters
+      .filter(f2)
+      .filter(f)
+      .sort(s?.fn)
+      .slice(0, cut ? 200 : characters.length)
+      .map((char: CharOwned) => ({
+        ...char,
+        owners: otherChars.has(char.id) ? [other!.id] : undefined,
+      }));
 
-      return m.map((char) => {
-        if (otherChars) {
-          return {
-            ...char,
-            owners: otherChars.includes(char.id) ? [other!.id] : undefined,
-          } as CharOwned;
-        } else {
-          return char as CharOwned;
-        }
-      });
-    });
+    const ownedIDs = new Set(owned.map((char) => char.id));
+
+    if (!MediaCharacters()) return owned;
+
+    const m = MediaCharacters()
+      ?.filter((char) => FilterCharacter()(char))
+      .filter((char) => !ownedIDs.has(char.id))
+      .filter(f)
+      .sort(s?.fn);
+    if (!m) return owned;
+
+    const missing = m.map((char) => ({
+      missing: true,
+      ...char,
+      owners: otherChars.has(char.id) ? [other!.id] : undefined,
+    }));
+
+    return [...owned, ...missing];
   };
 
-  const [charV, charS] = createSignal<CharOwned[]>();
-  const [charM, charMSet] = createSignal<CharOwned[] | undefined>();
-  createEffect(f);
-
+  const chars = createMemo(f);
   return (
     // let cards grow to fill the space but wrap so we still have multiple per row
     <div id="list" class="flex flex-row justify-center gap-6 flex-wrap">
-      <For each={charV()} fallback={<></>}>
+      <For each={chars()} fallback={<></>}>
         {(char: CharOwned) => (
           <div class="max-w-120 w-72 flex-grow">
-            <CharCard char={char} multiOwned={!!char.owners} />
+            <CharCard
+              char={char}
+              multiOwned={!!char.owners}
+              missing={char.missing}
+            />
           </div>
         )}
       </For>
-      <For each={charM()} fallback={<></>}>
-        {(char: CharOwned) => (
-          <div class="max-w-120 w-72 flex-grow">
-            <CharCard char={char} multiOwned={!!char.owners} missing={true} />
-          </div>
-        )}
-      </For>
-      {charV()?.length == 0 ? fallback : null}
+      {chars()?.length == 0 ? fallback : null}
     </div>
   );
 };

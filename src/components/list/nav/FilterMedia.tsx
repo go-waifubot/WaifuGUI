@@ -6,7 +6,7 @@ import { InputDropDown, DropDownOptionWithImage } from "../../generic/DropDown";
 import { Char } from "../../../api/list";
 
 let timer: number;
-function debounce(func: () => any, timeout: number) {
+export function debounce(func: () => any, timeout: number) {
   clearTimeout(timer);
   timer = setTimeout(() => func(), timeout);
 }

@@ -1,4 +1,4 @@
-import { createSignal } from "solid-js";
+import { createMemo, createSignal } from "solid-js";
 import type { Char } from "../../../api/list";
 import { Input } from "../../generic/Input";
 
@@ -10,19 +10,14 @@ const filterFn = (v: string) => (a: Char) => {
   );
 };
 
-const [charFilterValue, charFilterSet] = createSignal(filterFn(""));
-export const CharFilterValue = charFilterValue;
+const [getV, setV] = createSignal("");
+export const CharFilterValue = createMemo(() => filterFn(getV()));
 
-export const CharFilter = ({ class: classList }: { class?: string }) => {
-  const [getV, setV] = createSignal("");
+export const CharFilter = () => {
   return (
     <Input
       placeholder="Korone Inugami"
-      class={classList}
-      onInput={(v: string) => {
-        setV(v);
-        charFilterSet(() => filterFn(getV()));
-      }}
+      onInput={(v: string) => setV(v)}
       icon={
         <span
           class="i-ph-magnifying-glass"

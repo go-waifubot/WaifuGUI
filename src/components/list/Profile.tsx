@@ -7,11 +7,11 @@ import "./Profile.css";
 export default (props: {
   favorite: Char | undefined;
   user: string | undefined;
-  anilist_url: string | undefined;
+  anilistURL: string | undefined;
   about: string | undefined;
 }) => {
   const username =
-    props.anilist_url?.split(/https:\/\/anilist.co\/user\/([\w\d]+)/g)?.[1] ??
+    props.anilistURL?.split(/https:\/\/anilist.co\/user\/([\w\d]+)/g)?.[1] ??
     props.user;
 
   const Favorite = (
@@ -21,12 +21,12 @@ export default (props: {
   );
 
   const Username = (
-    <Show when={props.anilist_url}>
+    <Show when={props.anilistURL}>
       <a
         class="text-text font-sans hover:underline-offset-2 w-min hover:underline"
         target="_blank"
         rel="noopener noreferrer"
-        href={props.anilist_url}
+        href={props.anilistURL}
       >
         <h2 class="text-4xl">{username}</h2>
       </a>

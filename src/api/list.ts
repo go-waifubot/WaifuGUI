@@ -24,6 +24,7 @@ export interface CharOwned {
   date?: string;
   type?: string;
   owners?: UserID[];
+  missing?: boolean;
 }
 
 export type AsyncTuple<
