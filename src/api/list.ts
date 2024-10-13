@@ -29,12 +29,12 @@ export interface CharOwned {
 
 export type AsyncTuple<
   ErrorType extends any = Error,
-  DataType extends any = unknown
+  DataType extends any = unknown,
 > =
   | {
-      error: ErrorType;
-      data: null;
-    }
+    error: ErrorType;
+    data: null;
+  }
   | { error: null; data: DataType };
 
 /**
@@ -44,9 +44,9 @@ export type AsyncTuple<
  */
 export const until = async <
   ErrorType extends any = Error,
-  DataType extends any = unknown
+  DataType extends any = unknown,
 >(
-  promise: () => Promise<DataType>
+  promise: () => Promise<DataType>,
 ): Promise<AsyncTuple<ErrorType, DataType>> => {
   try {
     const data = await promise().catch((error) => {
@@ -61,14 +61,14 @@ export const until = async <
 export const getUser = async (anilistUsername: string) => {
   return until(() =>
     fetch(
-      `${ROOT_URL}/user/find?anilist=${encodeURIComponent(anilistUsername)}`
+      `${ROOT_URL}/user/find?anilist=${encodeURIComponent(anilistUsername)}`,
     )
       .then((res) => res.json())
       .then(
         (res) =>
           res as {
             id: string;
-          }
+          },
       )
   );
 };

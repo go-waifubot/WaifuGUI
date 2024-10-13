@@ -1,4 +1,4 @@
-import { For, createMemo } from "solid-js";
+import { createMemo, For } from "solid-js";
 import { Char, CharOwned } from "../../../api/list";
 import CharCard from "../char/Card";
 import { CharFilterValue } from "../nav/Filter";
@@ -22,7 +22,7 @@ export default ({
     const f2 = FilterCharacter();
     const other = UserAgainst();
     const otherChars: Set<string> = new Set(
-      (other?.waifus || []).map((char) => char.id) as []
+      (other?.waifus || []).map((char) => char.id) as [],
     );
 
     const owned = characters

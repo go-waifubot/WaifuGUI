@@ -1,5 +1,5 @@
 import { marked } from "marked";
-import { Show } from "solid-js";
+import { Show, Suspense } from "solid-js";
 import { Char } from "../../api/list";
 import CardRight from "./char/CardRIght";
 import "./Profile.css";
@@ -12,7 +12,7 @@ export default (props: {
 }) => {
   const username =
     props.anilistURL?.split(/https:\/\/anilist.co\/user\/([\w\d]+)/g)?.[1] ??
-    props.user;
+      props.user;
 
   const Favorite = (
     <Show when={props.favorite && props.favorite.name !== ""}>
@@ -54,7 +54,10 @@ export default (props: {
                   id="about"
                   class="hyphens-auto overflow-hidden text-sm m-0 md:break-words break-all text-text font-sans"
                   innerHTML={marked.parse(
-                    props.about?.replaceAll("\n", "\n\n") ?? ""
+                    props.about?.replaceAll("\n", "\n\n") ?? "",
+                    {
+                      async: false,
+                    },
                   )}
                 />
               </div>

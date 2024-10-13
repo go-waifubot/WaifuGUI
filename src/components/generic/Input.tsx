@@ -17,8 +17,7 @@ export const Input = ({
         type="text"
         onInput={(e) => onInput && onInput(e.currentTarget.value)}
         onKeyPress={(e) =>
-          onEnter && e.key === "Enter" && onEnter(e.currentTarget.value)
-        }
+          onEnter && e.key === "Enter" && onEnter(e.currentTarget.value)}
         placeholder={placeholder}
         class="
           w-full
@@ -33,7 +32,8 @@ export const Input = ({
           text-text
           overflow-clip
           "
-      ></input>
+      >
+      </input>
       {icon && <span class="top-3.5 right-3.5 absolute">{icon}</span>}
     </div>
   );

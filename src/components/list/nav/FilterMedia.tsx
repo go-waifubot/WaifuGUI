@@ -1,9 +1,9 @@
-import { createEffect, createResource, createSignal } from "solid-js";
-import type { Media, SearchMediaResponse } from "../../../api/anilist";
+import { createEffect, createResource, createSignal, Show } from "solid-js";
+import type { SearchMediaResponse } from "../../../api/anilist";
 import Label from "../../generic/Label";
 import { getMediaCharacters, searchMedia } from "../../../api/anilist";
-import { InputDropDown, DropDownOptionWithImage } from "../../generic/DropDown";
 import { Char } from "../../../api/list";
+import { Combobox } from "@kobalte/core/combobox";
 
 let timer: number;
 export function debounce(func: () => any, timeout: number) {
@@ -11,14 +11,14 @@ export function debounce(func: () => any, timeout: number) {
   timer = setTimeout(() => func(), timeout);
 }
 
-const [selected, setSelected] = createSignal<Media>();
+const [selected, setSelected] = createSignal<Option>();
 
 const [
   mediaCharacters,
   { refetch: refetchMediaCharacters, mutate: mutateChars },
 ] = createResource<Char[] | undefined>(async () => {
   if (!selected()) return undefined;
-  const m = await getMediaCharacters(selected()?.id!);
+  const m = await getMediaCharacters(selected()?.value!);
   if (!m) {
     console.log("no media");
     return undefined;
@@ -41,20 +41,21 @@ export const MediaCharacters = mediaCharacters;
 type Option = { value: string; label: string; image?: string };
 
 export default () => {
-  const [getV, setV] = createSignal("");
-  const [options, setOptions] = createSignal<Option[]>([]);
+  const [getSearchValue, setSearchValue] = createSignal("");
+  const [getOptions, setOptions] = createSignal<Option[]>([]);
+  const [getOpen, setOpen] = createSignal<boolean>(false);
 
   const fetchMedia = async () => {
     try {
-      if (!getV() || getV() == "") return undefined;
-      const m = await searchMedia(getV(), 5);
+      if (!getSearchValue() || getSearchValue() == "") return undefined;
+      const m = await searchMedia(getSearchValue(), 10);
       if (!m) console.log("no media");
       setOptions(
         m.data.Page.media.map((m) => ({
           value: m.id,
           label: m.title.romaji,
           image: m.coverImage.large,
-        }))
+        })),
       );
       return m;
     } catch (e) {
@@ -81,45 +82,83 @@ export default () => {
   const icon = () => (
     <span
       class="i-ph-television text-lg"
-      onClick={() => {
-        setSelected(undefined);
-        setV("");
-        setFilter(() => () => true);
-        mutateChars(undefined);
-      }}
       classList={{
         "text-emerald": !!selected(),
       }}
-    ></span>
+    >
+    </span>
   );
-
-  const onChange = (v: Option): void => {
-    const m = media()?.data.Page.media.find((m) => m.id == v.value);
-    setV((p) => m?.title.romaji || p);
-    setSelected(m!);
-  };
 
   return (
     <Label text="Filter by media">
-      <InputDropDown
-        onInput={(e: string) => {
-          setV(e);
-          debounce(() => refetchMedia(), 200);
+      <Combobox
+        options={getOptions()}
+        value={selected()}
+        onChange={(value: Option) => {
+          setSelected(value);
+          setOpen(false);
         }}
-        onEnter={(e: string) => {
-          setV(e);
-          refetchMedia();
+        open={getOpen()}
+        onInputChange={(value) => {
+          setOpen(true);
+          setSearchValue(value);
+          debounce(() => {
+            refetchMedia(value);
+          }, 200);
         }}
+        sameWidth={true}
+        optionLabel="label"
+        optionValue="value"
+        optionTextValue="label"
         placeholder="Made in Abyss"
-        value={getV}
-        options={options()}
-        onChange={onChange}
-        icon={icon}
-      >
-        {(option: Option) => (
-          <DropDownOptionWithImage label={option.label} image={option.image} />
+        itemComponent={(props) => (
+          <Combobox.Item
+            item={props.item}
+            class="text-left p-0 w-full text-text focus:outline-none hover:bg-surfaceB cursor-pointer"
+          >
+            <div class="flex flex-row items-center justify-between px-2 py-2 gap-4">
+              <Combobox.ItemLabel>
+                {props.item.rawValue.label}
+              </Combobox.ItemLabel>
+              <Show
+                when={props.item.rawValue.image}
+                fallback={<div></div>}
+              >
+                <img
+                  src={props.item.rawValue.image}
+                  class="h-12 w-12 object-cover"
+                >
+                </img>
+              </Show>
+            </div>
+          </Combobox.Item>
         )}
-      </InputDropDown>
+      >
+        <Combobox.Control
+          aria-label="Media"
+          class="flex w-full flex-row rounded-md overflow-clip bg-surfaceA"
+        >
+          <Combobox.Input class="w-full text-sm p-4 focus:outline-none bg-surfaceA placeholder:font-sans border-none hover:cursor-text placeholder:text-overlayC text-text overflow-clip" />
+          <Combobox.Trigger
+            class="bg-surfaceA border-none w-16 color-inherit"
+            onClick={() => {
+              setSelected(null);
+              setFilter(() => () => true);
+              setOpen(false);
+              setSearchValue("");
+            }}
+          >
+            <Combobox.Icon>
+              {icon()}
+            </Combobox.Icon>
+          </Combobox.Trigger>
+        </Combobox.Control>
+        <Combobox.Portal>
+          <Combobox.Content class="shadow text-sm">
+            <Combobox.Listbox class="p-0 m-0 overflow-clip hover:overflow-clip list-none flex w-full border-none rounded-md items-start flex-col bg-surfaceA" />
+          </Combobox.Content>
+        </Combobox.Portal>
+      </Combobox>
     </Label>
   );
 };

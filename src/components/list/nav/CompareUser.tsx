@@ -25,20 +25,20 @@ export default () => {
         icon={
           <span
             class="i-ph-apple-podcasts-logo"
-            title={
-              !!userAgainst()
-                ? "Comparing against user"
-                : "Look for a user to compare against"
-            }
+            title={!!userAgainst()
+              ? "Comparing against user"
+              : "Look for a user to compare against"}
             onClick={() => {
               setUserAgainst(undefined);
             }}
             classList={{
               "text-emerald": !!userAgainst(),
             }}
-          ></span>
+          >
+          </span>
         }
-      ></Input>
+      >
+      </Input>
     </Label>
   );
 };

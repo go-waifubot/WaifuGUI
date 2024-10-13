@@ -30,7 +30,8 @@ export default (props: {
           style={{
             filter: "none",
           }}
-        ></span>
+        >
+        </span>
       </Show>
       <CardRight char={props.char} class="p-4" />
     </div>

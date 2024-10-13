@@ -1,4 +1,4 @@
-import { useNavigate, type Navigator } from "@solidjs/router";
+import { type Navigator, useNavigate } from "@solidjs/router";
 import { getUser } from "./api/list";
 import GhostButton from "./components/generic/GhostButton";
 import Icon from "/src/assets/icon.png";
@@ -28,7 +28,8 @@ export default () => {
         placeholder="Kar"
         onInput={setValue}
         onEnter={() => userOrList(nav, value())}
-      ></Input>
+      >
+      </Input>
     </div>
   );
 

@@ -1,4 +1,4 @@
-import { Accessor, For, Setter, Show, createSignal } from "solid-js";
+import { Accessor, createSignal, For, Setter, Show } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
 
 function DropDown<T extends readonly any[]>(props: {
@@ -16,7 +16,8 @@ function DropDown<T extends readonly any[]>(props: {
         <div
           class="absolute top-0 left-0 w-full h-full"
           onClick={() => setOpen(false)}
-        ></div>
+        >
+        </div>
       </Show>
       <div class="w-full relative">
         <button class="w-full p-0 flex flex-row justify-between font-sans border-none hover:cursor-pointer bg-transparent text-text focus:outline-none">
@@ -102,8 +103,7 @@ export function InputDropDown<T extends readonly any[]>(props: {
       onKeyPress={(e) =>
         props.onEnter &&
         e.key === "Enter" &&
-        props.onEnter(e.currentTarget.value)
-      }
+        props.onEnter(e.currentTarget.value)}
       onFocus={() => setOpen(true)}
       placeholder={props.placeholder}
       value={props.value()}
@@ -111,7 +111,8 @@ export function InputDropDown<T extends readonly any[]>(props: {
       classList={{
         "hover:cursor-text": true,
       }}
-    ></input>
+    >
+    </input>
   );
 
   return <DropDown {...props} closed={closed} />;

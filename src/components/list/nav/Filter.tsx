@@ -24,8 +24,10 @@ export const CharFilter = () => {
           classList={{
             "text-emerald": !!getV(),
           }}
-        ></span>
+        >
+        </span>
       }
-    ></Input>
+    >
+    </Input>
   );
 };
